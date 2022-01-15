@@ -10,7 +10,9 @@ enum Stages {
 
 enum GameStates {
 	IDLE,
+	CASTING,
 	FISHING,
+	STOPPING,
 	REELING,
 }
 
@@ -24,7 +26,7 @@ export(Stages) var stage = Stages.BAY setget set_stage
 ## Private Variables
 var _game_state : int = GameStates.IDLE
 
-var _depth := -1.0
+var _depth := 0.0
 
 var _depth_max : int
 
@@ -59,24 +61,36 @@ func _ready() -> void:
 
 
 func _process(delta : float) -> void:
+	# CAST
 	if Input.is_action_just_released("game_start"):
-		animation_player.play("Start")
+		_game_state = GameStates.CASTING
+		animation_player.play("Cast")
 		yield(animation_player, "animation_finished")
 		_game_state = GameStates.FISHING
-		hook.playing = true
+		_set_depth(0.0)
 	
+	# STOP
+	if _game_state == GameStates.REELING and _depth <= 0.0:
+		_game_state = GameStates.IDLE
+		animation_player.play("Reel")
+		yield(animation_player, "animation_finished")
+		_set_depth(0.0)
+	
+	# Increase / Decrease depth
+	var playing := false
+	var plunging_speed := 25
 	if _game_state == GameStates.FISHING:
-		wall_left.step += 6 * delta
-		wall_right.step += 6 * delta
+		_set_depth(_depth + plunging_speed * delta)
+		playing = true
 	elif _game_state == GameStates.REELING:
-		wall_left.step += -6 * delta
-		wall_right.step += -6 * delta
-		
-		if wall_left.step < 3:
-			_game_state = GameStates.IDLE
-			hook.playing = false
-			animation_player.play("Stop")
-			yield(animation_player, "animation_finished")
+		_set_depth(_depth + -plunging_speed * delta)
+		playing = true
+	elif _game_state == GameStates.STOPPING:
+		_set_depth(_depth + -plunging_speed * delta)
+	
+	hook.playing = playing
+	wall_left.step = _depth
+	wall_right.step = _depth
 
 
 
@@ -96,6 +110,10 @@ func set_stage(value : int) -> void:
 
 
 ## Private Methods
+func _set_depth(depth : float) -> void:
+	_depth = clamp(depth, 0, INF)
+
+
 func _generate_level() -> void:
 	var steps = []
 	for s in range(_depth_max):
@@ -104,9 +122,15 @@ func _generate_level() -> void:
 	wall_right.steps = steps
 
 
-func _on_Hook_hit():
-	_game_state = GameStates.REELING
-	hook.playing = false
-	animation_player.play("Reeling")
+func _start_reeling() -> void:
+	if not _game_state == GameStates.FISHING:
+		return
+	
+	_game_state = GameStates.STOPPING
+	animation_player.play("Stop")
 	yield(animation_player, "animation_finished")
-	hook.playing = true
+	_game_state = GameStates.REELING
+
+
+func _on_Hook_hit():
+	_start_reeling()
