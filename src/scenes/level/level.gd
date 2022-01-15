@@ -2,8 +2,29 @@ extends Node2D
 ## Level Class
 
 
+
+## Enums
+enum Stages {
+	BAY,
+}
+
+
+
 ## Exported Variables
-export(int, 0, 100) var wall_step := 16
+export(Stages) var stage = Stages.BAY setget set_stage
+
+
+
+## Private Variables
+var _depth := -1.0
+
+var _depth_max : int
+
+var _wall_step_px : int
+
+var _wall_height_min : int
+
+var _wall_height_max : int
 
 
 
@@ -14,39 +35,42 @@ onready var walls : Node2D = get_node("Walls")
 
 onready var wall_left : Polygon2D = get_node("Walls/WallLeft")
 
-onready var wall_left_collision : CollisionPolygon2D = get_node("Walls/WallLeft/StaticBody2D/CollisionPolygon2D")
-
 onready var wall_right : Polygon2D = get_node("Walls/WallRight")
-
-onready var wall_right_collision : CollisionPolygon2D = get_node("Walls/WallRight/StaticBody2D/CollisionPolygon2D")
 
 
 
 ## Built-In Virtual Methods
 func _ready() -> void:
 	randomize()
-	var steps = 60
 	
-	var points := []
-	points.append(Vector2(0, 0) * wall_step)
-	for s in range(steps):
-		var h = 3 + randi() % 10
-		var p1 = Vector2(h, s) * wall_step
-		if points.back() != p1:
-			points.append(p1)
-		points.append(Vector2(h, s + 1) * wall_step)
-	points.append(Vector2(0, steps) * wall_step)
-	wall_left.polygon = PoolVector2Array(points)
-	wall_left_collision.polygon = wall_left.polygon
+	set_stage(stage)
+
+
+func _process(delta : float) -> void:
+	wall_left.step += 6 * delta
+	wall_right.step += 6 * delta
+
+
+
+## Public Methods
+func set_stage(value : int) -> void:
+	stage = value
 	
-	points.clear()
-	points.append(Vector2(0, 0) * wall_step)
-	for s in range(steps):
-		var h = 3 + randi() % 10
-		var p1 = Vector2(-h, s) * wall_step
-		if points.back() != p1:
-			points.append(p1)
-		points.append(Vector2(-h, s + 1) * wall_step)
-	points.append(Vector2(0, steps) * wall_step)
-	wall_right.polygon = PoolVector2Array(points)
-	wall_right_collision.polygon = wall_right.polygon
+	_wall_step_px = 16
+	match stage:
+		Stages.BAY:
+			_depth_max = 1000
+			_wall_height_min = 1
+			_wall_height_max = 4
+	
+	_generate_level()
+
+
+
+## Private Methods
+func _generate_level() -> void:
+	var steps = []
+	for s in range(_depth_max):
+		steps.append(_wall_height_min + randi() % _wall_height_max)
+	wall_left.steps = steps
+	wall_right.steps = steps

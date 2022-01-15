@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://src/scenes/level/level.gd" type="Script" id=1]
+[ext_resource path="res://src/scenes/level/wall/wall.tscn" type="PackedScene" id=2]
 
 [node name="Level" type="Node2D"]
 script = ExtResource( 1 )
@@ -9,16 +10,12 @@ script = ExtResource( 1 )
 
 [node name="Walls" type="Node2D" parent="."]
 
-[node name="WallLeft" type="Polygon2D" parent="Walls"]
-color = Color( 0, 0, 0, 1 )
+[node name="WallLeft" parent="Walls" instance=ExtResource( 2 )]
+step_direction = 1
 
-[node name="StaticBody2D" type="StaticBody2D" parent="Walls/WallLeft"]
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Walls/WallLeft/StaticBody2D"]
-
-[node name="WallRight" type="Polygon2D" parent="Walls"]
+[node name="WallRight" parent="Walls" instance=ExtResource( 2 )]
 position = Vector2( 1024, 0 )
+step = 1.0
 
-[node name="StaticBody2D" type="StaticBody2D" parent="Walls/WallRight"]
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Walls/WallRight/StaticBody2D"]
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( 512, -300 )
