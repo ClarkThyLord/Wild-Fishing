@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://src/scenes/level/level.gd" type="Script" id=1]
 [ext_resource path="res://src/scenes/level/wall/wall.tscn" type="PackedScene" id=2]
+[ext_resource path="res://src/scenes/level/hook/hook.tscn" type="PackedScene" id=3]
 
 [sub_resource type="Animation" id=1]
 resource_name = "Idle"
@@ -16,6 +17,18 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ Vector2( 512, -350 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Hook:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 512, 150 ) ]
 }
 
 [sub_resource type="Animation" id=2]
@@ -32,6 +45,18 @@ tracks/0/keys = {
 "update": 0,
 "values": [ Vector2( 512, -300 ) ]
 }
+tracks/1/type = "value"
+tracks/1/path = NodePath("Hook:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 512, 150 ) ]
+}
 
 [sub_resource type="Animation" id=3]
 resource_name = "Start"
@@ -46,6 +71,18 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ Vector2( 512, -300 ), Vector2( 512, 300 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Hook:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 512, 150 ) ]
 }
 
 [node name="Level" type="Node2D"]
@@ -66,8 +103,9 @@ step_direction = 1
 
 [node name="WallRight" parent="Walls" instance=ExtResource( 2 )]
 position = Vector2( 1024, 0 )
-step = 1.0
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2( 512, -300 )
 current = true
+
+[node name="Hook" parent="." instance=ExtResource( 3 )]

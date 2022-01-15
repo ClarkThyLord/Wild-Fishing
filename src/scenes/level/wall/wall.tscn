@@ -2,7 +2,7 @@
 
 [ext_resource path="res://src/scenes/level/wall/wall.gd" type="Script" id=1]
 
-[node name="Wall" type="Polygon2D"]
+[node name="Wall" type="Polygon2D" groups=["obstacles", "walls"]]
 color = Color( 0, 0, 0, 1 )
 script = ExtResource( 1 )
 
