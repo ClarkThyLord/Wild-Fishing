@@ -52,6 +52,8 @@ onready var wall_left := get_node("Walls/WallLeft")
 
 onready var wall_right := get_node("Walls/WallRight")
 
+onready var hud := get_node("HUD")
+
 
 
 ## Built-In Virtual Methods
@@ -94,6 +96,8 @@ func _process(delta : float) -> void:
 	hook.playing = playing
 	wall_left.step = _depth
 	wall_right.step = _depth
+	
+	hud.update_depth(_depth)
 
 
 

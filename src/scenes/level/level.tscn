@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://src/scenes/level/level.gd" type="Script" id=1]
 [ext_resource path="res://src/scenes/level/wall/wall.tscn" type="PackedScene" id=2]
 [ext_resource path="res://src/scenes/level/hook/hook.tscn" type="PackedScene" id=3]
+[ext_resource path="res://src/scenes/level/hud/hud.tscn" type="PackedScene" id=4]
 
 [sub_resource type="Animation" id=3]
 resource_name = "Cast"
@@ -165,5 +166,7 @@ position = Vector2( 1024, 0 )
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2( 512, -300 )
 current = true
+
+[node name="HUD" parent="." instance=ExtResource( 4 )]
 
 [connection signal="hit" from="Hook" to="." method="_on_Hook_hit"]
