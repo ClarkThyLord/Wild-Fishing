@@ -12,7 +12,7 @@ enum GameStates {
 	IDLE,
 	CASTING,
 	FISHING,
-	STOPPING,
+	START_REELING,
 	REELING,
 	STOP_REELING,
 }
@@ -90,7 +90,7 @@ func _process(delta : float) -> void:
 	elif _game_state == GameStates.REELING:
 		_set_depth(_depth + -plunging_speed * delta)
 		playing = true
-	elif _game_state == GameStates.STOPPING:
+	elif _game_state == GameStates.START_REELING:
 		_set_depth(_depth + -plunging_speed * delta)
 	
 	hook.playing = playing
@@ -133,7 +133,7 @@ func _start_reeling() -> void:
 	if not _game_state == GameStates.FISHING:
 		return
 	
-	_game_state = GameStates.STOPPING
+	_game_state = GameStates.START_REELING
 	animation_player.play("Stop")
 	yield(animation_player, "animation_finished")
 	_game_state = GameStates.REELING

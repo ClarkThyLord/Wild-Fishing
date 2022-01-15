@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://src/scenes/level/objects/fish/fish.gd" type="Script" id=1]
+[ext_resource path="res://assets/scenes/level/objects/fish/fish.png" type="Texture" id=2]
+
+[node name="Fish" type="StaticBody2D"]
+script = ExtResource( 1 )
+sprite = NodePath("Sprite")
+collision_polygon = NodePath("CollisionPolygon2D")
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 2 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
