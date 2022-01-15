@@ -14,6 +14,7 @@ enum GameStates {
 	FISHING,
 	STOPPING,
 	REELING,
+	STOP_REELING,
 }
 
 
@@ -62,7 +63,8 @@ func _ready() -> void:
 
 func _process(delta : float) -> void:
 	# CAST
-	if Input.is_action_just_released("game_start"):
+	if _game_state == GameStates.IDLE\
+			and Input.is_action_just_released("game_start"):
 		_game_state = GameStates.CASTING
 		animation_player.play("Cast")
 		yield(animation_player, "animation_finished")
@@ -71,9 +73,10 @@ func _process(delta : float) -> void:
 	
 	# STOP
 	if _game_state == GameStates.REELING and _depth <= 0.0:
-		_game_state = GameStates.IDLE
+		_game_state = GameStates.STOP_REELING
 		animation_player.play("Reel")
 		yield(animation_player, "animation_finished")
+		_game_state = GameStates.IDLE
 		_set_depth(0.0)
 	
 	# Increase / Decrease depth
