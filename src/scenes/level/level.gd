@@ -8,6 +8,12 @@ enum Stages {
 	BAY,
 }
 
+enum GameStates {
+	IDLE,
+	FISHING,
+	REELING,
+}
+
 
 
 ## Exported Variables
@@ -16,7 +22,7 @@ export(Stages) var stage = Stages.BAY setget set_stage
 
 
 ## Private Variables
-var _playing := false
+var _game_state : int = GameStates.IDLE
 
 var _depth := -1.0
 
@@ -33,13 +39,15 @@ var _wall_height_max : int
 ## OnReady Variables
 onready var animation_player : AnimationPlayer = get_node("AnimationPlayer")
 
+onready var hook := get_node("Hook")
+
 onready var objects : Node2D = get_node("Objects")
 
 onready var walls : Node2D = get_node("Walls")
 
-onready var wall_left : Polygon2D = get_node("Walls/WallLeft")
+onready var wall_left := get_node("Walls/WallLeft")
 
-onready var wall_right : Polygon2D = get_node("Walls/WallRight")
+onready var wall_right := get_node("Walls/WallRight")
 
 
 
@@ -54,11 +62,21 @@ func _process(delta : float) -> void:
 	if Input.is_action_just_released("game_start"):
 		animation_player.play("Start")
 		yield(animation_player, "animation_finished")
-		_playing = true
+		_game_state = GameStates.FISHING
+		hook.playing = true
 	
-	if _playing:
+	if _game_state == GameStates.FISHING:
 		wall_left.step += 6 * delta
 		wall_right.step += 6 * delta
+	elif _game_state == GameStates.REELING:
+		wall_left.step += -6 * delta
+		wall_right.step += -6 * delta
+		
+		if wall_left.step < 3:
+			_game_state = GameStates.IDLE
+			hook.playing = false
+			animation_player.play("Stop")
+			yield(animation_player, "animation_finished")
 
 
 
@@ -84,3 +102,11 @@ func _generate_level() -> void:
 		steps.append(_wall_height_min + randi() % _wall_height_max)
 	wall_left.steps = steps
 	wall_right.steps = steps
+
+
+func _on_Hook_hit():
+	_game_state = GameStates.REELING
+	hook.playing = false
+	animation_player.play("Reeling")
+	yield(animation_player, "animation_finished")
+	hook.playing = true

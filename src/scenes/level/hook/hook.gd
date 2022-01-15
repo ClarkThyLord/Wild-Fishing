@@ -3,7 +3,14 @@ extends Area2D
 
 
 
+## Signals
+signal hit
+
+
+
 ## Exported Variable
+export var playing := false
+
 export(float, 0.0, 1_000.0) var speed := 300.0
 
 
@@ -14,6 +21,9 @@ func _ready() -> void:
 
 
 func _process(delta : float) -> void:
+	if not playing:
+		return
+	
 	var direction := Vector2.ZERO
 	
 	if Input.is_action_pressed("game_move_left"):
@@ -27,4 +37,4 @@ func _process(delta : float) -> void:
 
 ## Private Methods
 func _on_body_entered(body : PhysicsBody2D) -> void:
-	print(body)
+	emit_signal("hit")

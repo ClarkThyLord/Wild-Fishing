@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://src/scenes/level/level.gd" type="Script" id=1]
 [ext_resource path="res://src/scenes/level/wall/wall.tscn" type="PackedScene" id=2]
@@ -28,7 +28,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( 512, 150 ) ]
+"values": [ Vector2( 512, -150 ) ]
 }
 
 [sub_resource type="Animation" id=2]
@@ -58,6 +58,33 @@ tracks/1/keys = {
 "values": [ Vector2( 512, 150 ) ]
 }
 
+[sub_resource type="Animation" id=4]
+resource_name = "Reeling"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Camera2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 512, 300 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Hook:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 512, 150 ), Vector2( 512, 450 ) ]
+}
+
 [sub_resource type="Animation" id=3]
 resource_name = "Start"
 tracks/0/type = "value"
@@ -79,10 +106,37 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector2( 512, 150 ) ]
+"values": [ Vector2( 512, -150 ), Vector2( 512, 150 ) ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "Stop"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Camera2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 512, 300 ), Vector2( 512, -350 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Hook:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 1 ),
+"transitions": PoolRealArray( 1 ),
+"update": 3,
+"values": [ Vector2( 512, -150 ) ]
 }
 
 [node name="Level" type="Node2D"]
@@ -92,7 +146,11 @@ script = ExtResource( 1 )
 autoplay = "Idle"
 anims/Idle = SubResource( 1 )
 anims/RESET = SubResource( 2 )
+anims/Reeling = SubResource( 4 )
 anims/Start = SubResource( 3 )
+anims/Stop = SubResource( 5 )
+
+[node name="Hook" parent="." instance=ExtResource( 3 )]
 
 [node name="Objects" type="Node2D" parent="."]
 
@@ -108,4 +166,4 @@ position = Vector2( 1024, 0 )
 position = Vector2( 512, -300 )
 current = true
 
-[node name="Hook" parent="." instance=ExtResource( 3 )]
+[connection signal="hit" from="Hook" to="." method="_on_Hook_hit"]
