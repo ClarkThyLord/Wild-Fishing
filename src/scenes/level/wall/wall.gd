@@ -69,7 +69,7 @@ func set_step_draw_range(value : int) -> void:
 func update() -> void:
 	var points := []
 	points.append(
-			Vector2(0, -3 - step) * step_pixel_size)
+			Vector2(0, -3) * step_pixel_size)
 	
 	var start_step := clamp(int(step), 0, INF)
 	var end_step := clamp(int(step + step_draw_range), 0, steps.size())

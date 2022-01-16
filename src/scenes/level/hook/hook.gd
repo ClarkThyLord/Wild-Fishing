@@ -15,6 +15,16 @@ export(float, 0.0, 1_000.0) var speed := 300.0
 
 
 
+## Private Variables
+var _tween := Tween.new()
+
+
+
+## OnReady Variables
+onready var animation_player : AnimationPlayer = get_node("AnimationPlayer")
+
+
+
 ## Built-In Virtual Methods
 func _ready() -> void:
 	connect("area_entered", self, "_on_area_entered")
@@ -37,4 +47,5 @@ func _process(delta : float) -> void:
 
 ## Private Methods
 func _on_area_entered(area : Area2D) -> void:
+	animation_player.play("Hit")
 	emit_signal("hit")

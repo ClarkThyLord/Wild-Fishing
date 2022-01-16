@@ -66,26 +66,15 @@ func _ready() -> void:
 
 
 func _process(delta : float) -> void:
-	# CAST
 	if Input.is_action_just_released("game_start"):
 		if _game_state == GameStates.IDLE:
-			_game_state = GameStates.CASTING
-			animation_player.play("Cast")
-			yield(animation_player, "animation_finished")
-			_game_state = GameStates.FISHING
-			_set_depth(0.0)
+			_cast()
 		elif _game_state == GameStates.FISHING:
 			_start_reeling()
 	
-	# STOP
 	if _game_state == GameStates.REELING and _depth <= 0.0:
-		_game_state = GameStates.STOP_REELING
-		animation_player.play("Reel")
-		yield(animation_player, "animation_finished")
-		_game_state = GameStates.IDLE
-		_set_depth(0.0)
+		_stop_reeling()
 	
-	# Increase / Decrease depth
 	var playing := false
 	var plunging_speed := 25
 	if _game_state == GameStates.FISHING:
@@ -133,6 +122,14 @@ func _generate_level() -> void:
 	wall_right.steps = steps
 
 
+func _cast() -> void:
+	_game_state = GameStates.CASTING
+	animation_player.play("Cast")
+	yield(animation_player, "animation_finished")
+	_game_state = GameStates.FISHING
+	_set_depth(0.0)
+
+
 func _start_reeling() -> void:
 	if not _game_state == GameStates.FISHING:
 		return
@@ -143,5 +140,16 @@ func _start_reeling() -> void:
 	_game_state = GameStates.REELING
 
 
+func _stop_reeling() -> void:
+	_game_state = GameStates.STOP_REELING
+	animation_player.play("Reel")
+	yield(animation_player, "animation_finished")
+	_game_state = GameStates.IDLE
+	_set_depth(0.0)
+
+
 func _on_Hook_hit():
-	_start_reeling()
+	if _game_state == GameStates.REELING:
+		_stop_reeling()
+	else:
+		_start_reeling()
