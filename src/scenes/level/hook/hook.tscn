@@ -4,10 +4,9 @@
 [ext_resource path="res://assets/scenes/level/hook/hook.png" type="Texture" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 16, 22 )
+extents = Vector2( 16, 26 )
 
 [node name="Hook" type="Area2D" groups=["players"]]
-position = Vector2( 512, 150 )
 script = ExtResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]

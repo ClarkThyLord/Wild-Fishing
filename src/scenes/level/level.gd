@@ -37,6 +37,8 @@ var _wall_height_min : int
 
 var _wall_height_max : int
 
+var _objects := []
+
 
 
 ## OnReady Variables
