@@ -67,13 +67,15 @@ func _ready() -> void:
 
 func _process(delta : float) -> void:
 	# CAST
-	if _game_state == GameStates.IDLE\
-			and Input.is_action_just_released("game_start"):
-		_game_state = GameStates.CASTING
-		animation_player.play("Cast")
-		yield(animation_player, "animation_finished")
-		_game_state = GameStates.FISHING
-		_set_depth(0.0)
+	if Input.is_action_just_released("game_start"):
+		if _game_state == GameStates.IDLE:
+			_game_state = GameStates.CASTING
+			animation_player.play("Cast")
+			yield(animation_player, "animation_finished")
+			_game_state = GameStates.FISHING
+			_set_depth(0.0)
+		elif _game_state == GameStates.FISHING:
+			_start_reeling()
 	
 	# STOP
 	if _game_state == GameStates.REELING and _depth <= 0.0:

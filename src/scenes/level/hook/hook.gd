@@ -17,7 +17,7 @@ export(float, 0.0, 1_000.0) var speed := 300.0
 
 ## Built-In Virtual Methods
 func _ready() -> void:
-	connect("body_entered", self, "_on_body_entered")
+	connect("area_entered", self, "_on_area_entered")
 
 
 func _process(delta : float) -> void:
@@ -36,5 +36,5 @@ func _process(delta : float) -> void:
 
 
 ## Private Methods
-func _on_body_entered(body : PhysicsBody2D) -> void:
+func _on_area_entered(area : Area2D) -> void:
 	emit_signal("hit")
