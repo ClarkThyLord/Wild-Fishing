@@ -27,15 +27,9 @@ export(Stages) var stage = Stages.BAY setget set_stage
 ## Private Variables
 var _game_state : int = GameStates.IDLE
 
+var _stage : Stage
+
 var _depth := 0.0
-
-var _depth_max : int
-
-var _wall_pixel_size : int
-
-var _wall_point_min : int
-
-var _wall_point_max : int
 
 
 
@@ -53,6 +47,8 @@ onready var walls : Node2D = get_node("Walls")
 onready var wall_left := get_node("Walls/WallLeft")
 
 onready var wall_right := get_node("Walls/WallRight")
+
+onready var level_floor := get_node("Floor")
 
 onready var hud := get_node("HUD")
 
@@ -89,10 +85,10 @@ func _process(delta : float) -> void:
 	
 	hook.playing = playing
 	if playing:
-		if _depth < _depth_max - (300 / _wall_pixel_size):
-			camera.position.y = 300 + _depth * _wall_pixel_size
+		if _depth < _stage.get_stage_depth() - (300 / 16):
+			camera.position.y = 300 + _depth * 16
 		else:
-			hook.position.y = clamp(hook.position.y + _wall_pixel_size, -INF, 200)
+			hook.position.y = clamp(hook.position.y + 16, -INF, 200)
 			if _game_state == GameStates.FISHING and hook.position.y >= 200:
 				_game_state = GameStates.REELING
 	
@@ -104,31 +100,19 @@ func _process(delta : float) -> void:
 func set_stage(value : int) -> void:
 	stage = value
 	
-	_wall_pixel_size = 16
-	match stage:
-		Stages.BAY:
-			_depth_max = 1000
-			_wall_point_min = 1
-			_wall_point_max = 4
+	_stage = load("res://src/scenes/level/stages/" + str(Stages.keys()[stage]) + ".gd").new()
 	
-	_generate_level()
+	_stage.random()
+	wall_left.wall_points = _stage.get_wall_points()
+	wall_right.wall_points = _stage.get_wall_points()
+	level_floor.position.y = _stage.get_stage_depth() * 16 + 270
 
 
 
 ## Private Methods
 func _set_depth(depth : float) -> void:
-	_depth = clamp(depth, 0, _depth_max)
-
-
-func _generate_level() -> void:
-	var points = []
-	
-	for s in range(_depth_max + 32):
-		var h = (cos(s / 3) + 1) * 2
-		points.append(h + _wall_point_min + randi() % _wall_point_max)
-	
-	wall_left.wall_points = points
-	wall_right.wall_points = points
+	_depth = clamp(
+			depth, 0, _stage.get_stage_depth() if is_instance_valid(_stage) else INF)
 
 
 func _cast() -> void:

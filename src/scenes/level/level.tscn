@@ -306,6 +306,10 @@ wall_direction = 1
 [node name="WallRight" parent="Walls" instance=ExtResource( 2 )]
 position = Vector2( 1024, 0 )
 
+[node name="Floor" type="Polygon2D" parent="."]
+color = Color( 0, 0, 0, 1 )
+polygon = PoolVector2Array( 0, 0, 1024, 0, 1024, 300, 0, 300 )
+
 [node name="HUD" parent="." instance=ExtResource( 4 )]
 
 [connection signal="hit" from="Camera2D/Hook" to="." method="_on_Hook_hit"]

@@ -8,6 +8,16 @@
 
 config_version=4
 
+_global_script_classes=[ {
+"base": "Reference",
+"class": "Stage",
+"language": "GDScript",
+"path": "res://src/scenes/level/stages/stage.gd"
+} ]
+_global_script_class_icons={
+"Stage": ""
+}
+
 [application]
 
 config/name="Wild-Fishing"
