@@ -72,7 +72,7 @@ func _process(delta : float) -> void:
 		_stop_reeling()
 	
 	var playing := false
-	var plunging_speed := 50
+	var plunging_speed := 16
 	if _game_state == GameStates.FISHING:
 		_set_depth(_depth + plunging_speed * delta)
 		playing = true
@@ -100,7 +100,7 @@ func _process(delta : float) -> void:
 func set_stage(value : int) -> void:
 	stage = value
 	
-	_stage = load("res://src/scenes/level/stages/" + str(Stages.keys()[stage]) + ".gd").new()
+	_stage = load("res://src/scenes/level/stages/" + str(Stages.keys()[stage]).to_lower() + ".gd").new()
 	
 	_stage.random()
 	wall_left.wall_points = _stage.get_wall_points()

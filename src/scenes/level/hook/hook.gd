@@ -11,7 +11,7 @@ signal hit
 ## Exported Variable
 export var playing := false
 
-export(float, 0.0, 1_000.0) var speed := 300.0
+export(float, 0.0, 1_000.0) var speed := 16.0
 
 
 
@@ -41,7 +41,7 @@ func _process(delta : float) -> void:
 	if Input.is_action_pressed("game_move_right"):
 		direction += Vector2.RIGHT
 	
-	position += (direction * speed) * delta
+	position += (direction * speed)
 
 
 

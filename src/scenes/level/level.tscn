@@ -307,6 +307,7 @@ wall_direction = 1
 position = Vector2( 1024, 0 )
 
 [node name="Floor" type="Polygon2D" parent="."]
+position = Vector2( 0, 600 )
 color = Color( 0, 0, 0, 1 )
 polygon = PoolVector2Array( 0, 0, 1024, 0, 1024, 300, 0, 300 )
 

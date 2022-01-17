@@ -5,7 +5,7 @@ extends Stage
 
 ## Built-In Virtual Methods
 func _init() -> void:
-	_stage_depth = 50
+	_stage_depth = 500
 
 
 ## Public Methods

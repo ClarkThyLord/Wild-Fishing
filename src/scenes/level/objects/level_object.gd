@@ -1,9 +1,20 @@
-extends StaticBody2D
+extends Area2D
 ## Level Object Class
+
+
+## Enums
+enum Directions {
+	LEFT = -1,
+	RIGHT = 1,
+}
 
 
 
 ## Exported Variables
+export var speed := 16
+
+export var direction := Directions.LEFT
+
 export var sprite : NodePath
 
 export var collision_polygon : NodePath
@@ -16,7 +27,26 @@ var _collision_polygon : CollisionPolygon2D
 
 
 
+## Built-In Virtual Methods
+func _process(delta : float) -> void:
+	position.x += speed * direction
+	if direction == Directions.LEFT and position.x < -80:
+		set_direction(Directions.RIGHT)
+	elif direction == Directions.RIGHT and position.x > 1104:
+		set_direction(Directions.LEFT)
+
+
+
 ## Public Methods
+func set_direction(value : int) -> void:
+	direction = value
+	if is_instance_valid(_sprite):
+		if direction == Directions.LEFT:
+			scale.x = abs(scale.x) * -1
+		else:
+			scale.x = abs(scale.x)
+
+
 func set_sprite(value : NodePath) -> void:
 	sprite = value
 	_sprite = get_node_or_null(sprite)

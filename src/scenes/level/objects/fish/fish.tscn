@@ -3,7 +3,7 @@
 [ext_resource path="res://src/scenes/level/objects/fish/fish.gd" type="Script" id=1]
 [ext_resource path="res://assets/scenes/level/objects/fish/fish.png" type="Texture" id=2]
 
-[node name="Fish" type="StaticBody2D"]
+[node name="Fish" type="Area2D"]
 script = ExtResource( 1 )
 sprite = NodePath("Sprite")
 collision_polygon = NodePath("CollisionPolygon2D")
