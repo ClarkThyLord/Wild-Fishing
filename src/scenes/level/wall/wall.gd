@@ -4,7 +4,7 @@ extends Polygon2D
 
 
 ## Enums
-enum StepDirections {
+enum WallDirections {
 	LEFT = -1,
 	RIGHT = 1,
 }
@@ -12,15 +12,11 @@ enum StepDirections {
 
 
 ## Exported Variables
-export var step := 0.0 setget set_step
+export(WallDirections) var wall_direction := WallDirections.LEFT setget set_wall_direction
 
-export var steps := [] setget set_steps
+export var wall_pixel_size := 16 setget set_wall_pixel_size
 
-export(StepDirections) var step_direction := StepDirections.LEFT setget set_direction
-
-export var step_pixel_size := 16 setget set_step_pixel_size
-
-export var step_draw_range := 64 setget set_step_draw_range
+export var wall_points := [] setget set_wall_points
 
 
 
@@ -29,39 +25,22 @@ onready var collision_polygon : CollisionPolygon2D = get_node("StaticBody2D/Coll
 
 
 
-## Built-In Virtual Methods
-func _ready() -> void:
-	set_step(step)
-
-
 
 ## Public Methods
-func set_step(value : float) -> void:
-	step = value
+func set_wall_points(value : Array) -> void:
+	wall_points = value
 	
 	update()
 
 
-func set_steps(value : Array) -> void:
-	steps = value
+func set_wall_direction(value : int) -> void:
+	wall_direction = value
 	
 	update()
 
 
-func set_direction(value : int) -> void:
-	step_direction = value
-	
-	update()
-
-
-func set_step_pixel_size(value : int) -> void:
-	step_pixel_size = value
-	
-	update()
-
-
-func set_step_draw_range(value : int) -> void:
-	step_draw_range = value
+func set_wall_pixel_size(value : int) -> void:
+	wall_pixel_size = value
 	
 	update()
 
@@ -69,18 +48,18 @@ func set_step_draw_range(value : int) -> void:
 func update() -> void:
 	var points := []
 	points.append(
-			Vector2(0, -3) * step_pixel_size)
+			Vector2(0, -3) * wall_pixel_size)
 	
-	var start_step := clamp(int(step), 0, INF)
-	var end_step := clamp(int(step + step_draw_range), 0, steps.size())
+	var start_step := 0
+	var end_step := wall_points.size()
 	for s in range(start_step, end_step):
-		var h = steps[s]
-		var p1 = Vector2(h * step_direction, s - step) * step_pixel_size
+		var h = wall_points[s]
+		var p1 = Vector2(h * wall_direction, s) * wall_pixel_size
 		if p1 != points.back():
 			points.append(p1)
-		points.append(Vector2(h * step_direction, s - step + 1) * step_pixel_size)
+		points.append(Vector2(h * wall_direction, s + 1) * wall_pixel_size)
 	
-	points.append(Vector2(0, end_step - step) * step_pixel_size)
+	points.append(Vector2(0, end_step) * wall_pixel_size)
 	
 	polygon = PoolVector2Array(points)
 	if is_instance_valid(collision_polygon):

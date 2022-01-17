@@ -31,20 +31,20 @@ var _depth := 0.0
 
 var _depth_max : int
 
-var _wall_step_px : int
+var _wall_pixel_size : int
 
-var _wall_height_min : int
+var _wall_point_min : int
 
-var _wall_height_max : int
-
-var _objects := []
+var _wall_point_max : int
 
 
 
 ## OnReady Variables
-onready var animation_player : AnimationPlayer = get_node("AnimationPlayer")
+onready var animation_player := get_node("AnimationPlayer")
 
-onready var hook := get_node("Hook")
+onready var camera := get_node("Camera2D")
+
+onready var hook := get_node("Camera2D/Hook")
 
 onready var objects : Node2D = get_node("Objects")
 
@@ -76,19 +76,25 @@ func _process(delta : float) -> void:
 		_stop_reeling()
 	
 	var playing := false
-	var plunging_speed := 25
+	var plunging_speed := 50
 	if _game_state == GameStates.FISHING:
 		_set_depth(_depth + plunging_speed * delta)
 		playing = true
-	elif _game_state == GameStates.REELING:
+	elif _game_state == GameStates.REELING\
+			or _game_state == GameStates.START_REELING:
 		_set_depth(_depth + -plunging_speed * delta)
 		playing = true
 	elif _game_state == GameStates.START_REELING:
 		_set_depth(_depth + -plunging_speed * delta)
 	
 	hook.playing = playing
-	wall_left.step = _depth
-	wall_right.step = _depth
+	if playing:
+		if _depth < _depth_max - (300 / _wall_pixel_size):
+			camera.position.y = 300 + _depth * _wall_pixel_size
+		else:
+			hook.position.y = clamp(hook.position.y + _wall_pixel_size, -INF, 200)
+			if _game_state == GameStates.FISHING and hook.position.y >= 200:
+				_game_state = GameStates.REELING
 	
 	hud.update_depth(_depth)
 
@@ -98,12 +104,12 @@ func _process(delta : float) -> void:
 func set_stage(value : int) -> void:
 	stage = value
 	
-	_wall_step_px = 16
+	_wall_pixel_size = 16
 	match stage:
 		Stages.BAY:
 			_depth_max = 1000
-			_wall_height_min = 1
-			_wall_height_max = 4
+			_wall_point_min = 1
+			_wall_point_max = 4
 	
 	_generate_level()
 
@@ -111,15 +117,18 @@ func set_stage(value : int) -> void:
 
 ## Private Methods
 func _set_depth(depth : float) -> void:
-	_depth = clamp(depth, 0, INF)
+	_depth = clamp(depth, 0, _depth_max)
 
 
 func _generate_level() -> void:
-	var steps = []
-	for s in range(_depth_max):
-		steps.append(_wall_height_min + randi() % _wall_height_max)
-	wall_left.steps = steps
-	wall_right.steps = steps
+	var points = []
+	
+	for s in range(_depth_max + 32):
+		var h = (cos(s / 3) + 1) * 2
+		points.append(h + _wall_point_min + randi() % _wall_point_max)
+	
+	wall_left.wall_points = points
+	wall_right.wall_points = points
 
 
 func _cast() -> void:
@@ -135,7 +144,7 @@ func _start_reeling() -> void:
 		return
 	
 	_game_state = GameStates.START_REELING
-	animation_player.play("Stop")
+	animation_player.play("HookHit")
 	yield(animation_player, "animation_finished")
 	_game_state = GameStates.REELING
 
