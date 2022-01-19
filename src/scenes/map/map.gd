@@ -1,8 +1,11 @@
 extends Node
-## Map Class
+## Scene Map
 
 
-func _on_Home_input_event(viewport, event, shape_idx):
+
+## Private Methods
+func _on_Shop_input_event(
+		viewport  : Viewport, event : InputEvent, shape_idx : int):
 	if event is InputEventMouseButton:
 		if event.pressed:
-			print("HOME")
+			Session.open_shop()
