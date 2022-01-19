@@ -102,16 +102,10 @@ func set_stage(value : int) -> void:
 	
 	_stage = load("res://src/scenes/level/stages/" + str(Stages.keys()[stage]).to_lower() + ".gd").new()
 	
-	_stage.random()
+	_stage.random(objects)
 	wall_left.wall_points = _stage.get_wall_points()
 	wall_right.wall_points = _stage.get_wall_points()
 	level_floor.position.y = _stage.get_stage_depth() * 16 + 270
-	
-	for i in range(int(_stage.get_stage_depth() / 3)):
-		var f = preload("res://src/scenes/level/objects/fish/fish.tscn").instance()
-		f.position.y = i * 100
-		f.scale = Vector2.ONE * 4
-		objects.add_child(f)
 
 
 

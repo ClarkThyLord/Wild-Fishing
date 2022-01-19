@@ -12,7 +12,7 @@ var _stage_depth : int
 
 
 ## Public Methods
-func random() -> void:
+func random(objects : Node2D) -> void:
 	pass
 
 

@@ -13,7 +13,7 @@ enum Directions {
 ## Exported Variables
 export var speed := 16
 
-export var direction := Directions.LEFT
+export(Directions) var direction := Directions.LEFT
 
 export var sprite : NodePath
 
@@ -81,3 +81,7 @@ func update_collision_polygon() -> void:
 		_collision_polygon.set_polygon(points[0])
 		_collision_polygon.position.x = -_sprite.texture.get_width() / 2
 		_collision_polygon.position.y = -_sprite.texture.get_height() / 2
+
+
+func random_direction() -> void:
+	set_direction(-1 if randf() <= 0.5 else 1)

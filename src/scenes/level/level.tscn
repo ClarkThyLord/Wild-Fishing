@@ -263,6 +263,7 @@ texture = ExtResource( 8 )
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2( 512, -350 )
 current = true
+zoom = Vector2( 4, 4 )
 
 [node name="Ocean" type="Sprite" parent="Camera2D"]
 visible = false
@@ -282,7 +283,7 @@ wall_direction = 1
 [node name="WallRight" parent="Walls" instance=ExtResource( 2 )]
 position = Vector2( 1024, 0 )
 
-[node name="Floor" type="Polygon2D" parent="."]
+[node name="Floor" type="Polygon2D" parent="." groups=["floors", "obstacles"]]
 position = Vector2( 0, 600 )
 color = Color( 0, 0, 0, 1 )
 polygon = PoolVector2Array( 0, 0, 1024, 0, 1024, 300, 0, 300 )
