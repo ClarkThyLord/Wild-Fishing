@@ -207,11 +207,23 @@ tracks/1/keys = {
 "times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8, 1 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Vector2( 64, 39 ), Vector2( 65, 38 ), Vector2( 64, 39 ), Vector2( 65, 38 ), Vector2( 64, 39 ), Vector2( 65, 38 ) ]
+"values": [ Vector2( 64, -41.75 ), Vector2( 64, -42.75 ), Vector2( 64, -41.75 ), Vector2( 64, -42.75 ), Vector2( 64, -41.75 ), Vector2( 64, -42.75 ) ]
 }
 
 [sub_resource type="Animation" id=7]
 length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("WavesFront:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 64, -43.75 ) ]
+}
 
 [node name="Level" type="Node2D"]
 script = ExtResource( 1 )
@@ -241,7 +253,7 @@ texture = ExtResource( 5 )
 position = Vector2( 64, -43.75 )
 texture = ExtResource( 6 )
 region_enabled = true
-region_rect = Rect2( 0, 0, 128, 75 )
+region_rect = Rect2( 67.696, 0, 128, 75 )
 
 [node name="OceanTop" type="Sprite" parent="Background"]
 position = Vector2( 64, 34.375 )
