@@ -100,7 +100,7 @@ anims/IDLE = SubResource( 4 )
 anims/RESET = SubResource( 3 )
 
 [node name="Sprite" type="Sprite" parent="."]
-rotation = -0.785397
+rotation = -0.785396
 texture = ExtResource( 2 )
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]

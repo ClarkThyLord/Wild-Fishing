@@ -87,17 +87,17 @@ func _process(delta : float) -> void:
 	
 	var playing := false
 	var plunging_speed := 16
+	hook.hook_state = hook.HookStates.IDLE
 	if _game_state == GameStates.FISHING:
 		_set_depth(_depth + plunging_speed * delta)
 		playing = true
+		hook.hook_state = hook.HookStates.PLUNGING
 	elif _game_state == GameStates.REELING\
 			or _game_state == GameStates.START_REELING:
 		_set_depth(_depth + -plunging_speed * delta)
 		playing = true
-	elif _game_state == GameStates.START_REELING:
-		_set_depth(_depth + -plunging_speed * delta)
+		hook.hook_state = hook.HookStates.RISING
 	
-	hook.playing = playing
 	if playing:
 		if _depth < _stage.get_stage_depth() - (300 / 16):
 			camera.position.y = 300 + _depth * 16

@@ -8,8 +8,17 @@ signal hit
 
 
 
+## Enums
+enum HookStates {
+	IDLE,
+	PLUNGING,
+	RISING,
+}
+
+
+
 ## Exported Variable
-export var playing := false
+export(HookStates) var hook_state : int = HookStates.IDLE
 
 export(float, 0.0, 1_000.0) var speed := 16.0
 
@@ -31,7 +40,7 @@ func _ready() -> void:
 
 
 func _process(delta : float) -> void:
-	if not playing:
+	if hook_state == HookStates.IDLE:
 		return
 	
 	var direction := Vector2.ZERO
@@ -47,5 +56,15 @@ func _process(delta : float) -> void:
 
 ## Private Methods
 func _on_area_entered(area : Area2D) -> void:
-	animation_player.play("Hit")
-	emit_signal("hit")
+	match hook_state:
+		HookStates.PLUNGING:
+			if area.is_in_group("obstacles"):
+				animation_player.play("Hit")
+				emit_signal("hit")
+		HookStates.RISING:
+			if area.is_in_group("fishes"):
+				print("collect")
+			elif area.is_in_group("obstacles"):
+				animation_player.play("Hit")
+				emit_signal("hit")
+	
