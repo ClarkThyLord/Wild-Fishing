@@ -15,3 +15,7 @@ func open_map() -> void:
 
 func open_shop() -> void:
 	pass
+
+
+func open_level(stage : String) -> void:
+	get_tree().change_scene("res://src/scenes/level/level.tscn")

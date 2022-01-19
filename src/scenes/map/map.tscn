@@ -23,4 +23,10 @@ __meta__ = {
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Node2D/Shop"]
 polygon = PoolVector2Array( 718, 599, 933, 365, 1024, 280, 1023, 600 )
 
+[node name="Bay" type="Area2D" parent="Node2D"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Node2D/Bay"]
+polygon = PoolVector2Array( 593, 588, 1014, 102, 1024, 279, 721, 600 )
+
 [connection signal="input_event" from="Node2D/Shop" to="." method="_on_Shop_input_event"]
+[connection signal="input_event" from="Node2D/Bay" to="." method="_on_Bay_input_event"]
