@@ -52,6 +52,20 @@ onready var level_floor := get_node("Floor")
 
 onready var hud := get_node("HUD")
 
+onready var sky : Sprite = get_node("Background/Sky")
+
+onready var clouds : Sprite = get_node("Background/Clouds")
+
+onready var ocean_top : Sprite = get_node("Background/OceanTop")
+
+onready var waves_back : Sprite = get_node("Background/WavesBack")
+
+onready var boat : Sprite = get_node("Background/Boat")
+
+onready var waves_front = get_node("Background/WavesFront")
+
+onready var ocean_bottom = get_node("Camera2D/OceanBottom")
+
 
 
 ## Built-In Virtual Methods
@@ -101,6 +115,13 @@ func set_stage(value : int) -> void:
 	stage = value
 	
 	_stage = load("res://src/scenes/level/stages/" + str(Stages.keys()[stage]).to_lower() + ".gd").new()
+	
+	sky.texture = _stage.get_sky_texture()
+	clouds.texture = _stage.get_clouds_texture()
+	ocean_top.texture = _stage.get_ocean_texture()
+	ocean_bottom.texture = _stage.get_ocean_texture()
+	waves_front.texture = _stage.get_waves_texture()
+	waves_back.texture = _stage.get_waves_texture()
 	
 	_stage.random(objects)
 	wall_left.wall_points = _stage.get_wall_points()

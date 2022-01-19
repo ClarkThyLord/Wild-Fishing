@@ -4,10 +4,10 @@
 [ext_resource path="res://src/scenes/level/wall/wall.tscn" type="PackedScene" id=2]
 [ext_resource path="res://src/scenes/level/hook/hook.tscn" type="PackedScene" id=3]
 [ext_resource path="res://src/scenes/level/hud/hud.tscn" type="PackedScene" id=4]
-[ext_resource path="res://assets/scenes/level/level/bay/level.bay.sky.png" type="Texture" id=5]
-[ext_resource path="res://assets/scenes/level/level/bay/level.bay.cloud.png" type="Texture" id=6]
-[ext_resource path="res://assets/scenes/level/level/bay/level.bay.ocean.png" type="Texture" id=7]
-[ext_resource path="res://assets/scenes/level/level/bay/level.bay.waves.png" type="Texture" id=8]
+[ext_resource path="res://assets/scenes/level/level/bay/sky.png" type="Texture" id=5]
+[ext_resource path="res://assets/scenes/level/level/bay/clouds.png" type="Texture" id=6]
+[ext_resource path="res://assets/scenes/level/level/bay/ocean.png" type="Texture" id=7]
+[ext_resource path="res://assets/scenes/level/level/bay/waves.png" type="Texture" id=8]
 [ext_resource path="res://assets/scenes/level/boat/boat.png" type="Texture" id=9]
 
 [sub_resource type="Animation" id=8]
@@ -37,7 +37,7 @@ tracks/1/keys = {
 "values": [ Vector2( 0, 150 ), Vector2( 0, -200 ) ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("Camera2D/Ocean:visible")
+tracks/2/path = NodePath("Camera2D/OceanBottom:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -91,7 +91,7 @@ tracks/1/keys = {
 "values": [ Vector2( 0, 150 ) ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("Camera2D/Ocean:visible")
+tracks/2/path = NodePath("Camera2D/OceanBottom:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -130,7 +130,7 @@ tracks/1/keys = {
 "values": [ Vector2( 0, 150 ) ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("Camera2D/Ocean:visible")
+tracks/2/path = NodePath("Camera2D/OceanBottom:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -169,7 +169,7 @@ tracks/1/keys = {
 "values": [ Vector2( 0, 150 ) ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("Camera2D/Ocean:visible")
+tracks/2/path = NodePath("Camera2D/OceanBottom:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -243,7 +243,7 @@ texture = ExtResource( 6 )
 region_enabled = true
 region_rect = Rect2( 0, 0, 128, 75 )
 
-[node name="Ocean" type="Sprite" parent="Background"]
+[node name="OceanTop" type="Sprite" parent="Background"]
 position = Vector2( 64, 34.375 )
 scale = Vector2( 1, 1.08333 )
 texture = ExtResource( 7 )
@@ -264,7 +264,7 @@ texture = ExtResource( 8 )
 position = Vector2( 512, -350 )
 current = true
 
-[node name="Ocean" type="Sprite" parent="Camera2D"]
+[node name="OceanBottom" type="Sprite" parent="Camera2D"]
 visible = false
 scale = Vector2( 8, 8 )
 texture = ExtResource( 7 )

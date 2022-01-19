@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/level.bay.sky.png-fb58da24573a3f4be7db6e91a1347303.stex"
+path="res://.import/ocean.png-6de59c1315779e0f400204ce2e22c31f.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/scenes/level/level/bay/level.bay.sky.png"
-dest_files=[ "res://.import/level.bay.sky.png-fb58da24573a3f4be7db6e91a1347303.stex" ]
+source_file="res://assets/scenes/level/level/bay/ocean.png"
+dest_files=[ "res://.import/ocean.png-6de59c1315779e0f400204ce2e22c31f.stex" ]
 
 [params]
 

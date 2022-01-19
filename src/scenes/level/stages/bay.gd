@@ -12,6 +12,11 @@ var _fish_0 := [
 ## Built-In Virtual Methods
 func _init() -> void:
 	_stage_depth = 500
+	
+	_ocean = preload("res://assets/scenes/level/level/bay/ocean.png")
+	_waves = preload("res://assets/scenes/level/level/bay/waves.png")
+	_clouds = preload("res://assets/scenes/level/level/bay/clouds.png")
+	_sky = preload("res://assets/scenes/level/level/bay/sky.png")
 
 
 
