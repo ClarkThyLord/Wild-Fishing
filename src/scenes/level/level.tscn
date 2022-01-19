@@ -207,35 +207,11 @@ tracks/1/keys = {
 "times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8, 1 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Vector2( 64, -40.75 ), Vector2( 64, -43.75 ), Vector2( 64, -40.75 ), Vector2( 64, -43.75 ), Vector2( 64, -40.75 ), Vector2( 64, -43.75 ) ]
+"values": [ Vector2( 64, 39 ), Vector2( 65, 38 ), Vector2( 64, 39 ), Vector2( 65, 38 ), Vector2( 64, 39 ), Vector2( 65, 38 ) ]
 }
 
 [sub_resource type="Animation" id=7]
 length = 0.001
-tracks/0/type = "value"
-tracks/0/path = NodePath("Clouds:region_rect")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Rect2( 0, 0, 128, 75 ) ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("WavesFront:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector2( 64, -43.75 ) ]
-}
 
 [node name="Level" type="Node2D"]
 script = ExtResource( 1 )
