@@ -22,6 +22,7 @@ func random(objects : Node2D) -> void:
 		var h = (cos(s / 3) + 1) * 2
 		_wall_points.append(h + 1 + randi() % 4)
 	
+	var y := 375.0
 	for i in range(100):
 		if randf() < 0.6 and i < 60:
 			continue
@@ -29,9 +30,12 @@ func random(objects : Node2D) -> void:
 		var obj
 		if true:
 			obj = preload("res://src/scenes/level/objects/fish/fish.tscn").instance()
-			obj.position.y = i * 100
 			obj.size = clamp(randf() * 4, 0.75, 4.0)
 		
 		obj.random_direction()
 		
 		objects.add_child(obj)
+		
+		var h : float = obj.get_height()
+		y += (h * 2) + (randf() * 100)
+		obj.position.y = y

@@ -24,5 +24,7 @@ func _ready() -> void:
 
 ## Public Variables
 func set_size(value : float) -> void:
-	size = clamp(value, 0.75, 4.0)
+	size = clamp(value, 0.75, 10.0)
 	scale = Vector2.ONE * size
+	
+	set_speed(3 * (10.0 / size))

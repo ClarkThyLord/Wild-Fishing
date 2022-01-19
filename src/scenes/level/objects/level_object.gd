@@ -11,7 +11,7 @@ enum Directions {
 
 
 ## Exported Variables
-export var speed := 16
+export var speed := 16.0 setget set_speed
 
 export(Directions) var direction := Directions.LEFT
 
@@ -38,6 +38,10 @@ func _process(delta : float) -> void:
 
 
 ## Public Methods
+func set_speed(value : float) -> void:
+	speed = clamp(value, 3, 12)
+
+
 func set_direction(value : int) -> void:
 	direction = value
 	if is_instance_valid(_sprite):
@@ -85,3 +89,7 @@ func update_collision_polygon() -> void:
 
 func random_direction() -> void:
 	set_direction(-1 if randf() <= 0.5 else 1)
+
+
+func get_height() -> float:
+	return _sprite.texture.get_height() * scale.y
