@@ -21,7 +21,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Wild-Fishing"
-run/main_scene="res://src/scenes/level/level.tscn"
+run/main_scene="res://src/scenes/main_menu/main_menu.tscn"
 config/icon="res://icon.png"
 
 [autoload]

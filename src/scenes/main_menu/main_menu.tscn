@@ -58,13 +58,13 @@ rect_min_size = Vector2( 0, 128 )
 alignment = 1
 
 [node name="Start" type="Button" parent="VBoxContainer/VBoxContainer"]
-modulate = Color( 0.364706, 0.25098, 0.215686, 1 )
-margin_left = 176.0
-margin_top = 36.0
-margin_right = 339.0
-margin_bottom = 92.0
+margin_left = 152.0
+margin_top = 12.0
+margin_right = 363.0
+margin_bottom = 116.0
 size_flags_horizontal = 4
 size_flags_vertical = 4
 custom_fonts/font = SubResource( 1 )
 text = "START"
-flat = true
+
+[connection signal="pressed" from="VBoxContainer/VBoxContainer/Start" to="." method="_on_Start_pressed"]
