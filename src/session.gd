@@ -3,8 +3,16 @@ extends Node
 
 
 
+## Public Methods
+var money := 0 setget set_money
+
+
 
 ## Public Methods
+func set_money(value : int) -> void:
+	money = clamp(value, 0, INF)
+
+
 func open_main_menu() -> void:
 	get_tree().change_scene("res://src/scenes/main_menu/main_menu.tscn")
 
