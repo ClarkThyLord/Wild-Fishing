@@ -45,8 +45,10 @@ anims/Hit = SubResource( 2 )
 anims/RESET = SubResource( 3 )
 
 [node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 0, -27 )
 scale = Vector2( 4, 4 )
 texture = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0, -27 )
 shape = SubResource( 1 )

@@ -52,7 +52,10 @@ func hook_by(hook) -> void:
 	get_parent().remove_child(self)
 	hook.add_child(self)
 	
-	position = Vector2.ZERO
+	position = Vector2(
+		-get_width() / 4,
+		get_height() / 2
+	)
 	if object_state == ObjectStates.MOVING_LEFT:
 		animation_player.play("CaughtLeft")
 	elif object_state == ObjectStates.MOVING_RIGHT:

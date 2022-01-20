@@ -90,6 +90,10 @@ func random() -> void:
 			ObjectStates.MOVING_LEFT if randf() <= 0.5 else ObjectStates.MOVING_RIGHT)
 
 
+func get_width() -> float:
+	return _sprite.texture.get_width() * scale.x
+
+
 func get_height() -> float:
 	return _sprite.texture.get_height() * scale.y
 
