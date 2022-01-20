@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/sky.png-7238b4cf0ae7a837bd251ee2f76565c0.stex"
+path="res://.import/waves.png-af9285afa7df1b95431bf77bcd6cc7bf.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/scenes/level/level/bay/sky.png"
-dest_files=[ "res://.import/sky.png-7238b4cf0ae7a837bd251ee2f76565c0.stex" ]
+source_file="res://assets/scenes/level/stages/bay/waves.png"
+dest_files=[ "res://.import/waves.png-af9285afa7df1b95431bf77bcd6cc7bf.stex" ]
 
 [params]
 

@@ -4,14 +4,38 @@ extends CanvasLayer
 
 
 # OnReady Variables
-onready var hud : Control = get_node("Control")
+onready var money : Label = get_node("InfoPanel/Money")
 
-onready var depth : Label = get_node("Control/Depth")
+onready var depth : Label = get_node("InfoPanel/Depth")
+
+onready var depth_max : Label = get_node("InfoPanel/DepthMax")
+
+onready var settings : Button = get_node("InfoPanel/Settings")
+
 
 
 ## Public Methods
+func update_money(value : float) -> void:
+	if not is_instance_valid(money):
+		return
+	
+	money.text = "$   %010d" % value
+
+
 func update_depth(value : float) -> void:
 	if not is_instance_valid(depth):
 		return
 	
-	depth.text = "DEPTH: %010.2f ft." % value
+	depth.text = "%.2f ft." % value
+
+func update_depth_max(value : float) -> void:
+	if not is_instance_valid(depth_max):
+		return
+	
+	depth_max.text = "%d ft." % value
+
+
+
+## Private Methods
+func _on_Settings_pressed():
+	Settings.show()

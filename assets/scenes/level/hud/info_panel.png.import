@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/ocean.png-6de59c1315779e0f400204ce2e22c31f.stex"
+path="res://.import/info_panel.png-b6dd0c0ff4bd91b77454525b746dd069.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/scenes/level/level/bay/ocean.png"
-dest_files=[ "res://.import/ocean.png-6de59c1315779e0f400204ce2e22c31f.stex" ]
+source_file="res://assets/scenes/level/hud/info_panel.png"
+dest_files=[ "res://.import/info_panel.png-b6dd0c0ff4bd91b77454525b746dd069.stex" ]
 
 [params]
 
