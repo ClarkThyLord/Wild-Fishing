@@ -2,23 +2,26 @@ extends Area2D
 ## Level Object Class
 
 
+
 ## Enums
-enum Directions {
-	IDLE = 0,
-	LEFT = -1,
-	RIGHT = 1,
+enum ObjectStates {
+	IDLE,
+	MOVING_LEFT,
+	MOVING_RIGHT,
+	CAUGHT,
 }
 
 
 
 ## Exported Variables
-export var speed := 16.0 setget set_speed
+export(ObjectStates) var object_state := ObjectStates.IDLE
 
-export(Directions) var direction := Directions.LEFT
+export var speed := 16.0 setget set_speed
 
 export var sprite : NodePath
 
 export var collision_polygon : NodePath
+
 
 
 ## Private Variables
@@ -29,30 +32,43 @@ var _collision_polygon : CollisionPolygon2D
 
 
 ## Built-In Virtual Methods
+func _ready() -> void:
+	if object_state == ObjectStates.MOVING_LEFT:
+		position.x  = -80
+	elif object_state == ObjectStates.MOVING_RIGHT:
+		position.x = 1104
+
+
 func _process(delta : float) -> void:
-	if direction == Directions.IDLE:
-		return
+	var direction := Vector2.ZERO
+	match object_state:
+		ObjectStates.MOVING_LEFT:
+			direction = Vector2.LEFT
+		ObjectStates.MOVING_RIGHT:
+			direction = Vector2.RIGHT
 	
-	position.x += speed * direction
-	if direction == Directions.LEFT and position.x < -80:
-		set_direction(Directions.RIGHT)
-	elif direction == Directions.RIGHT and position.x > 1104:
-		set_direction(Directions.LEFT)
+	position += speed * direction
+	
+	if object_state == ObjectStates.MOVING_LEFT\
+			and position.x < -80:
+		set_object_state(ObjectStates.MOVING_RIGHT)
+	elif object_state == ObjectStates.MOVING_RIGHT\
+			and position.x > 1104:
+		set_object_state(ObjectStates.MOVING_LEFT)
 
 
 
 ## Public Methods
+func set_object_state(value : int) -> void:
+	object_state = value
+	
+	scale = scale.abs()
+	if object_state == ObjectStates.MOVING_LEFT:
+		scale.x *= -1
+
+
 func set_speed(value : float) -> void:
 	speed = clamp(value, 3, 12)
-
-
-func set_direction(value : int) -> void:
-	direction = value
-	if is_instance_valid(_sprite):
-		if direction == Directions.LEFT:
-			scale.x = abs(scale.x) * -1
-		else:
-			scale.x = abs(scale.x)
 
 
 func set_sprite(value : NodePath) -> void:
@@ -67,6 +83,15 @@ func set_collision_polygon(value : NodePath) -> void:
 	_collision_polygon = get_node_or_null(collision_polygon)
 	
 	update_collision_polygon()
+
+
+func random() -> void:
+	set_object_state(
+			ObjectStates.MOVING_LEFT if randf() <= 0.5 else ObjectStates.MOVING_RIGHT)
+
+
+func get_height() -> float:
+	return _sprite.texture.get_height() * scale.y
 
 
 func update_collision_polygon() -> void:
@@ -89,11 +114,3 @@ func update_collision_polygon() -> void:
 		_collision_polygon.set_polygon(points[0])
 		_collision_polygon.position.x = -_sprite.texture.get_width() / 2
 		_collision_polygon.position.y = -_sprite.texture.get_height() / 2
-
-
-func random_direction() -> void:
-	set_direction(-1 if randf() <= 0.5 else 1)
-
-
-func get_height() -> float:
-	return _sprite.texture.get_height() * scale.y

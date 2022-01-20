@@ -15,19 +15,29 @@ onready var animation_player : AnimationPlayer = get_node("AnimationPlayer")
 
 ## Built-In Virtual Methods
 func _ready() -> void:
+	set_object_state(object_state)
 	set_sprite(NodePath("Sprite"))
 	set_collision_polygon(NodePath("CollisionPolygon2D"))
-	set_direction(direction)
 	update_collision_polygon()
-	
-	if direction == Directions.LEFT:
-		position.x  = -80
-	elif direction == Directions.RIGHT:
-		position.x = 1104
 
 
 
 ## Public Variables
+func set_object_state(value : int) -> void:
+	.set_object_state(value)
+	
+	if not is_instance_valid(animation_player):
+		return
+	
+	match object_state:
+		ObjectStates.IDLE:
+			animation_player.play("Idle")
+		ObjectStates.MOVING_LEFT:
+			animation_player.play("SwimmingLeft")
+		ObjectStates.MOVING_RIGHT:
+			animation_player.play("SwimmingRight")
+
+
 func set_size(value : float) -> void:
 	size = clamp(value, 0.75, 10.0)
 	scale = Vector2.ONE * size
@@ -43,8 +53,8 @@ func hook_by(hook) -> void:
 	hook.add_child(self)
 	
 	position = Vector2.ZERO
-	if direction == Directions.LEFT:
-		animation_player.play("HookedLeft")
-	elif direction == Directions.RIGHT:
-		animation_player.play("HookedRight")
-	direction = Directions.IDLE
+	if object_state == ObjectStates.MOVING_LEFT:
+		animation_player.play("CaughtLeft")
+	elif object_state == ObjectStates.MOVING_RIGHT:
+		animation_player.play("CaughtRight")
+	object_state = ObjectStates.CAUGHT

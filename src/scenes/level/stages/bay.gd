@@ -37,7 +37,7 @@ func random(objects : Node2D) -> void:
 			obj = preload("res://src/scenes/level/objects/fish/fish.tscn").instance()
 			obj.size = clamp(randf() * 4, 0.75, 4.0)
 		
-		obj.random_direction()
+		obj.random()
 		
 		objects.add_child(obj)
 		
