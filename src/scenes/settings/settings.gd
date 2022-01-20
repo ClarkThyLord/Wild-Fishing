@@ -1,16 +1,49 @@
 extends CanvasLayer
+## Settings Scene
 
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
+
+## OnReady Variables
+onready var control : ColorRect = get_node("Control")
 
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
+
+## Built-In Virtual Methods
+func _ready() -> void:
+	hide()
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+func _input(event : InputEvent) -> void:
+	if not is_instance_valid(control):
+		return
+	
+	if event is InputEventKey:
+		if event.pressed:
+			return
+		
+		match event.scancode:
+			KEY_ESCAPE:
+				if control.visible:
+					hide()
+				else:
+					show()
+
+
+
+## Public Methods
+func show() -> void:
+	control.show()
+
+
+func hide() -> void:
+	control.hide()
+
+
+
+## Private Methods
+func _on_Confirm_pressed():
+	hide()
+
+
+func _on_Cancel_pressed():
+	hide()
