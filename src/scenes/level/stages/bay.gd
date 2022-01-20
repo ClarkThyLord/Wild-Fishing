@@ -13,10 +13,10 @@ var _fish_0 := [
 func _init() -> void:
 	_stage_depth = 500
 	
-	_ocean = preload("res://assets/scenes/level/level/bay/ocean.png")
-	_waves = preload("res://assets/scenes/level/level/bay/waves.png")
-	_clouds = preload("res://assets/scenes/level/level/bay/clouds.png")
-	_sky = preload("res://assets/scenes/level/level/bay/sky.png")
+	_ocean = preload("res://assets/scenes/level/stages/bay/ocean.png")
+	_waves = preload("res://assets/scenes/level/stages/bay/waves.png")
+	_clouds = preload("res://assets/scenes/level/stages/bay/clouds.png")
+	_sky = preload("res://assets/scenes/level/stages/bay/sky.png")
 
 
 
