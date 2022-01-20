@@ -8,6 +8,11 @@ export(float, 0.75, 10.0) var size := 1.0 setget set_size
 
 
 
+## OnReady Variables
+onready var animation_player : AnimationPlayer = get_node("AnimationPlayer")
+
+
+
 ## Built-In Virtual Methods
 func _ready() -> void:
 	set_sprite(NodePath("Sprite"))
@@ -28,3 +33,18 @@ func set_size(value : float) -> void:
 	scale = Vector2.ONE * size
 	
 	set_speed(3 * (10.0 / size))
+
+
+func hook_by(hook) -> void:
+	call_deferred("set_monitorable", false)
+	yield(get_tree(),"idle_frame")
+	
+	get_parent().remove_child(self)
+	hook.add_child(self)
+	
+	position = Vector2.ZERO
+	if direction == Directions.LEFT:
+		animation_player.play("HookedLeft")
+	elif direction == Directions.RIGHT:
+		animation_player.play("HookedRight")
+	direction = Directions.IDLE

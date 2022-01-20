@@ -56,10 +56,10 @@ func _process(delta : float) -> void:
 
 ## Private Methods
 func _on_area_entered(area : Area2D) -> void:
+	if area.is_in_group("fishes"):
+		area.hook_by(self)
+	
 	if area.is_in_group("obstacles") and hook_state == HookStates.PLUNGING\
 			or not area.is_in_group("fishes"):
 		animation_player.play("Hit")
 		emit_signal("hit")
-	
-	if area.is_in_group("fishes"):
-		print("collect")

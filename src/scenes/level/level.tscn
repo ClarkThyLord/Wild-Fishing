@@ -253,7 +253,7 @@ texture = ExtResource( 5 )
 position = Vector2( 64, -43.75 )
 texture = ExtResource( 6 )
 region_enabled = true
-region_rect = Rect2( 85.0883, 0, 128, 75 )
+region_rect = Rect2( 16.6062, 0, 128, 75 )
 
 [node name="OceanTop" type="Sprite" parent="Background"]
 position = Vector2( 64, 34.375 )

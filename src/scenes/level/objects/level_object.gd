@@ -4,6 +4,7 @@ extends Area2D
 
 ## Enums
 enum Directions {
+	IDLE = 0,
 	LEFT = -1,
 	RIGHT = 1,
 }
@@ -29,6 +30,9 @@ var _collision_polygon : CollisionPolygon2D
 
 ## Built-In Virtual Methods
 func _process(delta : float) -> void:
+	if direction == Directions.IDLE:
+		return
+	
 	position.x += speed * direction
 	if direction == Directions.LEFT and position.x < -80:
 		set_direction(Directions.RIGHT)
