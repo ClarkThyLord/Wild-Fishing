@@ -4,6 +4,8 @@ extends LevelObject
 
 
 ## Exported Variables
+export var fish := 0
+
 export(float, 0.75, 10.0) var size := 1.0 setget set_size
 
 export(float, 0.0, 100_000.0) var worth := 0.0
@@ -19,10 +21,13 @@ onready var animation_player : AnimationPlayer = get_node("AnimationPlayer")
 func _ready() -> void:
 	set_object_state(object_state)
 	set_sprite(NodePath("Sprite"))
+	
+	_sprite.texture =\
+			load("res://assets/scenes/level/objects/fish/%s.png" % str(fish))
+	set_size(size)
+	
 	set_collision_polygon(NodePath("CollisionPolygon2D"))
 	update_collision_polygon()
-	
-	set_size(size)
 
 
 

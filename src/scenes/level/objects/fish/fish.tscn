@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://src/scenes/level/objects/fish/fish.gd" type="Script" id=1]
-[ext_resource path="res://assets/scenes/level/objects/fish/fish.png" type="Texture" id=2]
+[ext_resource path="res://assets/scenes/level/objects/fish/0.png" type="Texture" id=2]
 
 [sub_resource type="Animation" id=2]
 resource_name = "CaughtLeft"
