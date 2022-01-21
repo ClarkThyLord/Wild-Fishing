@@ -1,12 +1,20 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://assets/scenes/map/map.png" type="Texture" id=1]
 [ext_resource path="res://src/scenes/map/map.gd" type="Script" id=2]
+[ext_resource path="res://assets/fonts/cave_story.ttf" type="DynamicFontData" id=3]
+
+[sub_resource type="DynamicFont" id=1]
+size = 64
+outline_size = 6
+outline_color = Color( 0.243137, 0.152941, 0.137255, 1 )
+use_mipmaps = true
+font_data = ExtResource( 3 )
 
 [node name="Map" type="Node"]
 script = ExtResource( 2 )
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="Texture" type="TextureRect" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
@@ -16,17 +24,66 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Node2D" type="Node2D" parent="."]
+[node name="Shop" type="Area2D" parent="."]
 
-[node name="Shop" type="Area2D" parent="Node2D"]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Shop"]
+polygon = PoolVector2Array( 795, 600, 774, 459, 891, 340, 1024, 336, 1024, 600 )
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Node2D/Shop"]
-polygon = PoolVector2Array( 718, 599, 933, 365, 1024, 280, 1023, 600 )
+[node name="Label" type="Label" parent="Shop"]
+margin_left = 863.0
+margin_top = 458.0
+margin_right = 981.0
+margin_bottom = 498.0
+custom_fonts/font = SubResource( 1 )
+text = "SHOP"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": true
+}
 
-[node name="Bay" type="Area2D" parent="Node2D"]
+[node name="Coast" type="Area2D" parent="."]
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Node2D/Bay"]
-polygon = PoolVector2Array( 593, 588, 1014, 102, 1024, 279, 721, 600 )
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Coast"]
+polygon = PoolVector2Array( 414, 544, 464, 492, 588, 462, 694, 424, 703, 389, 730, 353, 801, 280, 837, 243, 879, 284, 941, 309, 934, 335, 890, 335, 806, 419, 768, 457, 775, 500, 748, 521, 682, 558, 583, 600, 335, 600 )
 
-[connection signal="input_event" from="Node2D/Shop" to="." method="_on_Shop_input_event"]
-[connection signal="input_event" from="Node2D/Bay" to="." method="_on_Bay_input_event"]
+[node name="Label" type="Label" parent="Coast"]
+margin_left = 621.0
+margin_top = 463.0
+margin_right = 752.0
+margin_bottom = 503.0
+custom_fonts/font = SubResource( 1 )
+text = "Coast"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="Bay" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Bay"]
+polygon = PoolVector2Array( 944, 306, 882, 280, 840, 240, 808, 182, 808, 74, 859, 36, 881, 0, 1024, 0, 1024, 206 )
+
+[node name="Label" type="Label" parent="Bay"]
+margin_left = 878.0
+margin_top = 165.0
+margin_right = 996.0
+margin_bottom = 205.0
+custom_fonts/font = SubResource( 1 )
+text = "Bay"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[connection signal="input_event" from="Shop" to="." method="_on_Area_input_event" binds= [ "shop" ]]
+[connection signal="mouse_entered" from="Shop" to="." method="_on_Area_mouse_entered"]
+[connection signal="mouse_exited" from="Shop" to="." method="_on_Area_mouse_exited"]
+[connection signal="input_event" from="Coast" to="." method="_on_Area_input_event" binds= [ "coast" ]]
+[connection signal="mouse_entered" from="Coast" to="." method="_on_Area_mouse_entered"]
+[connection signal="mouse_exited" from="Coast" to="." method="_on_Area_mouse_exited"]
+[connection signal="input_event" from="Bay" to="." method="_on_Area_input_event" binds= [ "bay" ]]
+[connection signal="mouse_entered" from="Bay" to="." method="_on_Area_mouse_entered"]
+[connection signal="mouse_exited" from="Bay" to="." method="_on_Area_mouse_exited"]
