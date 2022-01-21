@@ -34,7 +34,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0, 1 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector2( 0, 150 ), Vector2( 0, -200 ) ]
+"values": [ Vector2( 0, 150 ), Vector2( 0, -80 ) ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath("Camera2D/OceanBottom:visible")

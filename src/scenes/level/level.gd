@@ -167,6 +167,7 @@ func _stop_reeling() -> void:
 
 func _on_Hook_hit():
 	if _game_state == GameStates.REELING:
+		hook.liquidate()
 		_stop_reeling()
 	else:
 		_start_reeling()
