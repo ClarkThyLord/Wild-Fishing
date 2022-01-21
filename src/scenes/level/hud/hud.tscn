@@ -42,8 +42,7 @@ margin_right = -27.0
 margin_bottom = 48.0
 custom_colors/font_color = Color( 0.243137, 0.152941, 0.137255, 1 )
 custom_fonts/font = SubResource( 1 )
-text = "$    00000000"
-align = 2
+text = "$    0000000"
 valign = 1
 __meta__ = {
 "_edit_use_anchors_": false

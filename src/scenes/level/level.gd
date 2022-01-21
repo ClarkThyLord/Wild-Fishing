@@ -127,6 +127,7 @@ func set_stage(value : int) -> void:
 	wall_left.wall_points = _stage.get_wall_points()
 	wall_right.wall_points = _stage.get_wall_points()
 	level_floor.position.y = _stage.get_stage_depth() * 16 + 270
+	hud.update_depth_max(_stage.get_stage_depth())
 
 
 

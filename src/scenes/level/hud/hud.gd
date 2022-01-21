@@ -19,7 +19,7 @@ func update_money(value : float) -> void:
 	if not is_instance_valid(money):
 		return
 	
-	money.text = "$   %010d" % value
+	money.text = "$   %10d" % value
 
 
 func update_depth(value : float) -> void:
