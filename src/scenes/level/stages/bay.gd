@@ -35,11 +35,11 @@ func random(objects : Node2D) -> void:
 		var obj
 		if true:
 			obj = preload("res://src/scenes/level/objects/fish/fish.tscn").instance()
-			obj.size = clamp(randf() * 4, 0.75, 4.0)
-		
-		obj.random()
+			obj.fish = randi() % 16
 		
 		objects.add_child(obj)
+		
+		obj.random()
 		
 		var h : float = obj.get_height()
 		y += (h * 2) + (randf() * 100)

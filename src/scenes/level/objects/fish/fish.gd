@@ -54,6 +54,15 @@ func set_size(value : float) -> void:
 	set_speed(3 * (10.0 / size))
 
 
+func random() -> void:
+	.random()
+	
+	var min_size := 1.5
+	if get_width() <= 12:
+		min_size = 3.0
+	set_size(clamp(randf() * 4, min_size, 4.0))
+
+
 func liquidate() -> int:
 	queue_free()
 	return int(clamp(worth * size, 1, INF))
