@@ -1,4 +1,5 @@
 extends Area2D
+class_name LevelObject
 ## Level Object Class
 
 
@@ -96,6 +97,10 @@ func get_width() -> float:
 
 func get_height() -> float:
 	return _sprite.texture.get_height() * scale.y
+
+
+func liquidate() -> int:
+	return 0
 
 
 func update_collision_polygon() -> void:

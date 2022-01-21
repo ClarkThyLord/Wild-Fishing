@@ -9,12 +9,18 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Area2D",
+"class": "LevelObject",
+"language": "GDScript",
+"path": "res://src/scenes/level/objects/level_object.gd"
+}, {
 "base": "Reference",
 "class": "Stage",
 "language": "GDScript",
 "path": "res://src/scenes/level/stages/stage.gd"
 } ]
 _global_script_class_icons={
+"LevelObject": "",
 "Stage": ""
 }
 

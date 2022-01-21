@@ -160,9 +160,9 @@ func _stop_reeling() -> void:
 	animation_player.play("Reel")
 	yield(animation_player, "animation_finished")
 	_game_state = GameStates.IDLE
-	_set_depth(0.0)
-	Session.money += hook.collect()
+	Session.money += hook.liquidate()
 	hud.update_money()
+	_set_depth(0.0)
 
 
 func _on_Hook_hit():

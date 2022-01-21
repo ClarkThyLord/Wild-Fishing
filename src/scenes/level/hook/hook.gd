@@ -55,19 +55,21 @@ func _process(delta : float) -> void:
 
 
 ## Public Methods
-func collect() -> int:
-	var cash := 0
-	for level_object in get_children():
-		if level_object.is_in_group("fishes"):
-			cash += level_object.cash()
-	return cash
+func liquidate() -> int:
+	var revenue := 0
+	
+	for node in get_children():
+		if node is LevelObject:
+			revenue += node.liquidate()
+	
+	return revenue
 
 
 
 ## Private Methods
 func _on_area_entered(area : Area2D) -> void:
 	if area.is_in_group("fishes"):
-		area.hook_by(self)
+		area.hooked_by(self)
 	
 	if area.is_in_group("obstacles") and hook_state == HookStates.PLUNGING\
 			or not area.is_in_group("fishes"):

@@ -1,10 +1,12 @@
-extends "res://src/scenes/level/objects/level_object.gd"
+extends LevelObject
 ## Level Object Fish Class
 
 
 
 ## Exported Variables
 export(float, 0.75, 10.0) var size := 1.0 setget set_size
+
+export(float, 0.0, 100_000.0) var worth := 0.0
 
 
 
@@ -19,6 +21,8 @@ func _ready() -> void:
 	set_sprite(NodePath("Sprite"))
 	set_collision_polygon(NodePath("CollisionPolygon2D"))
 	update_collision_polygon()
+	
+	set_size(size)
 
 
 
@@ -45,7 +49,12 @@ func set_size(value : float) -> void:
 	set_speed(3 * (10.0 / size))
 
 
-func hook_by(hook) -> void:
+func liquidate() -> int:
+	queue_free()
+	return int(clamp(worth * size, 1, INF))
+
+
+func hooked_by(hook) -> void:
 	call_deferred("set_monitorable", false)
 	yield(get_tree(),"idle_frame")
 	
@@ -61,8 +70,3 @@ func hook_by(hook) -> void:
 	elif object_state == ObjectStates.MOVING_RIGHT:
 		animation_player.play("CaughtRight")
 	object_state = ObjectStates.CAUGHT
-
-
-func cash() -> int:
-	queue_free()
-	return 3 + randi() % 20
