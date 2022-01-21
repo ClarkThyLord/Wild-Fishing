@@ -78,12 +78,9 @@ __meta__ = {
 "_edit_use_anchors_": true
 }
 
-[connection signal="input_event" from="Shop" to="." method="_on_Area_input_event" binds= [ "shop" ]]
-[connection signal="mouse_entered" from="Shop" to="." method="_on_Area_mouse_entered"]
-[connection signal="mouse_exited" from="Shop" to="." method="_on_Area_mouse_exited"]
-[connection signal="input_event" from="Coast" to="." method="_on_Area_input_event" binds= [ "coast" ]]
-[connection signal="mouse_entered" from="Coast" to="." method="_on_Area_mouse_entered"]
-[connection signal="mouse_exited" from="Coast" to="." method="_on_Area_mouse_exited"]
-[connection signal="input_event" from="Bay" to="." method="_on_Area_input_event" binds= [ "bay" ]]
-[connection signal="mouse_entered" from="Bay" to="." method="_on_Area_mouse_entered"]
-[connection signal="mouse_exited" from="Bay" to="." method="_on_Area_mouse_exited"]
+[connection signal="input_event" from="Shop" to="." method="_on_Area_input_event" binds= [ "Shop" ]]
+[connection signal="mouse_exited" from="Shop" to="." method="_on_Area_mouse_exited" binds= [ "Shop" ]]
+[connection signal="input_event" from="Coast" to="." method="_on_Area_input_event" binds= [ "Coast" ]]
+[connection signal="mouse_exited" from="Coast" to="." method="_on_Area_mouse_exited" binds= [ "Coast" ]]
+[connection signal="input_event" from="Bay" to="." method="_on_Area_input_event" binds= [ "Bay" ]]
+[connection signal="mouse_exited" from="Bay" to="." method="_on_Area_mouse_exited" binds= [ "Bay" ]]
