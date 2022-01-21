@@ -59,8 +59,9 @@ func random() -> void:
 	
 	var min_size := 1.5
 	if get_width() <= 12:
-		min_size = 3.0
+		min_size = 2.0
 	set_size(clamp(randf() * 4, min_size, 4.0))
+	set_speed(speed + (speed * ((randi() % 11) / 10)))
 
 
 func liquidate() -> int:
