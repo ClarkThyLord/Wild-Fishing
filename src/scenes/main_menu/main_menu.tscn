@@ -47,22 +47,27 @@ rect_min_size = Vector2( 0, 128 )
 alignment = 1
 
 [node name="Start" type="Button" parent="VBoxContainer/VBoxContainer"]
+margin_left = 89.0
 margin_top = 4.0
-margin_right = 516.0
+margin_right = 426.0
 margin_bottom = 44.0
-size_flags_vertical = 4
+rect_min_size = Vector2( 337, 0 )
+mouse_default_cursor_shape = 2
+size_flags_horizontal = 4
 custom_fonts/font = SubResource( 1 )
 text = "START"
-flat = true
 
 [node name="Settings" type="Button" parent="VBoxContainer/VBoxContainer"]
+margin_left = 49.0
 margin_top = 48.0
-margin_right = 516.0
+margin_right = 467.0
 margin_bottom = 88.0
+rect_min_size = Vector2( 418, 0 )
+mouse_default_cursor_shape = 2
+size_flags_horizontal = 4
 size_flags_vertical = 4
 custom_fonts/font = SubResource( 1 )
 text = "SETTINGS"
-flat = true
 
 [node name="GitHub" type="TextureButton" parent="VBoxContainer/VBoxContainer"]
 modulate = Color( 0.47451, 0.333333, 0.282353, 1 )
@@ -71,6 +76,7 @@ margin_top = 92.0
 margin_right = 274.0
 margin_bottom = 124.0
 rect_min_size = Vector2( 32, 32 )
+mouse_default_cursor_shape = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 texture_normal = ExtResource( 5 )
