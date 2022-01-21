@@ -3,6 +3,17 @@ extends Node
 
 
 
+## OnReady Variables
+onready var money : Label = get_node("Texture/InfoPanel/Money")
+
+
+
+## Built-In Virtual Methods
+func _ready() -> void:
+	money.text = "$     %07d" % Session.money
+
+
+
 ## Private Methods
 func _set_area_text_color(area_name : String, color : Color) -> void:
 	var label : Label = get_node_or_null(area_name + "/Label")
