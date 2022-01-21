@@ -54,6 +54,16 @@ func _process(delta : float) -> void:
 
 
 
+## Public Methods
+func collect() -> int:
+	var cash := 0
+	for level_object in get_children():
+		if level_object.is_in_group("fishes"):
+			cash += level_object.cash()
+	return cash
+
+
+
 ## Private Methods
 func _on_area_entered(area : Area2D) -> void:
 	if area.is_in_group("fishes"):

@@ -15,11 +15,11 @@ onready var settings : Button = get_node("InfoPanel/Settings")
 
 
 ## Public Methods
-func update_money(value : float) -> void:
+func update_money(value : float = Session.money) -> void:
 	if not is_instance_valid(money):
 		return
 	
-	money.text = "$   %10d" % value
+	money.text = "$     %07d" % value
 
 
 func update_depth(value : float) -> void:

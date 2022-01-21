@@ -61,3 +61,8 @@ func hook_by(hook) -> void:
 	elif object_state == ObjectStates.MOVING_RIGHT:
 		animation_player.play("CaughtRight")
 	object_state = ObjectStates.CAUGHT
+
+
+func cash() -> int:
+	queue_free()
+	return 3 + randi() % 20
