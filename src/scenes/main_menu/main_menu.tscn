@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://src/scenes/main_menu/main_menu.gd" type="Script" id=1]
 [ext_resource path="res://icon.png" type="Texture" id=2]
@@ -8,8 +8,6 @@
 [sub_resource type="DynamicFont" id=1]
 size = 64
 font_data = ExtResource( 3 )
-
-[sub_resource type="StyleBoxEmpty" id=3]
 
 [node name="MainMenu" type="Control"]
 anchor_right = 1.0
@@ -48,23 +46,11 @@ rect_min_size = Vector2( 0, 128 )
 alignment = 1
 
 [node name="Start" type="Button" parent="VBoxContainer/VBoxContainer"]
-margin_left = 184.0
 margin_top = 44.0
-margin_right = 331.0
+margin_right = 516.0
 margin_bottom = 84.0
-size_flags_horizontal = 4
 size_flags_vertical = 4
-custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
-custom_colors/font_color_focus = Color( 0.305882, 0.203922, 0.180392, 1 )
-custom_colors/font_color = Color( 0.364706, 0.25098, 0.215686, 1 )
-custom_colors/font_color_hover = Color( 0.305882, 0.203922, 0.180392, 1 )
-custom_colors/font_color_pressed = Color( 0.243137, 0.152941, 0.137255, 1 )
 custom_fonts/font = SubResource( 1 )
-custom_styles/hover = SubResource( 3 )
-custom_styles/pressed = SubResource( 3 )
-custom_styles/focus = SubResource( 3 )
-custom_styles/disabled = SubResource( 3 )
-custom_styles/normal = SubResource( 3 )
 text = "START"
 flat = true
 
