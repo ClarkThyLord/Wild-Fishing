@@ -28,6 +28,8 @@ var money := 0 setget set_money
 
 
 ## Private Variables
+var _intro := true
+
 var _new_session : Dictionary
 
 
@@ -44,6 +46,14 @@ func _exit_tree() -> void:
 
 
 ## Public Methods
+func get_intro() -> bool:
+	return _intro
+
+
+func finished_intro() -> void:
+	_intro = false
+
+
 func set_money(value : int) -> void:
 	money = clamp(value, 0, INF)
 

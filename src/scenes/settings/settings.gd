@@ -51,4 +51,5 @@ func _on_Cancel_pressed():
 
 func _on_Reset_pressed():
 	Session.reset()
+	Theater.hide()
 	hide()

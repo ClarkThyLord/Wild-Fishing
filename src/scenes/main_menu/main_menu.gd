@@ -3,6 +3,18 @@ extends Control
 
 
 
+onready var animation_player : AnimationPlayer = get_node("AnimationPlayer")
+
+
+## Built-In Virtual Methods
+func _ready() -> void:
+	if Session.get_intro():
+		animation_player.play("Intro")
+		yield(animation_player, "animation_finished")
+		Session.finished_intro()
+
+
+
 ## Private Methods
 func _on_Start_pressed():
 	Session.open_map()
