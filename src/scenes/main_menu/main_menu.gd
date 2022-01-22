@@ -12,13 +12,13 @@ onready var start : Button = get_node("VBoxContainer/VBoxContainer/Start")
 
 ## Built-In Virtual Methods
 func _ready() -> void:
+	if Session.story_progress > 0:
+		start.text = "CONTINUE"
+	
 	if Session.get_intro():
 		animation_player.play("Intro")
 		yield(animation_player, "animation_finished")
 		Session.finished_intro()
-	
-	if Session.story_progress > 0:
-		start.text = "CONTINUE"
 
 
 
