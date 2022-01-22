@@ -275,7 +275,6 @@ texture = ExtResource( 8 )
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2( 512, -350 )
 current = true
-zoom = Vector2( 4, 4 )
 
 [node name="OceanBottom" type="Sprite" parent="Camera2D"]
 visible = false

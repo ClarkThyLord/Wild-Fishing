@@ -4,11 +4,11 @@ extends LevelObject
 
 
 ## Exported Variables
-export var fish := 0
+export var fish := 0 setget set_fish
 
 export(float, 0.75, 10.0) var size := 1.0 setget set_size
 
-export(float, 0.0, 100_000.0) var worth := 0.0
+export(float, 0.0, 100_000.0) var worth := 1.0 setget set_worth
 
 
 
@@ -22,8 +22,7 @@ func _ready() -> void:
 	set_object_state(object_state)
 	set_sprite(NodePath("Sprite"))
 	
-	_sprite.texture =\
-			load("res://assets/scenes/level/objects/fish/%s.png" % str(fish))
+	set_fish(fish)
 	set_size(size)
 	
 	set_collision_polygon(NodePath("CollisionPolygon2D"))
@@ -47,11 +46,42 @@ func set_object_state(value : int) -> void:
 			animation_player.play("SwimmingRight")
 
 
+func set_fish(value : int) -> void:
+	fish = value
+	
+	match fish:
+		9, 15, 6, 7, 8:
+			# SMALL
+			set_worth(15)
+		10, 11, 12:
+			# MEDIUM
+			set_worth(25)
+		0, 1, 2, 3, 5:
+			# BIG
+			set_worth(40)
+		14:
+			# SMALL EXCOTIC
+			set_worth(50)
+		13:
+			# MEDIUM EXCOTIC
+			set_worth(10)
+		_:
+			set_worth(stepify(100 * randf(), 10))
+	
+	if is_instance_valid(_sprite):
+		_sprite.texture =\
+				load("res://assets/scenes/level/objects/fish/%s.png" % str(fish))
+
+
 func set_size(value : float) -> void:
 	size = clamp(value, 0.75, 10.0)
 	scale = Vector2.ONE * size
 	
 	set_speed(3 * (10.0 / size))
+
+
+func set_worth(value : float) -> void:
+	worth = clamp(value, 1, INF)
 
 
 func random() -> void:
