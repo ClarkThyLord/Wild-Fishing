@@ -4,7 +4,7 @@ extends CanvasLayer
 
 
 ## Exported Variables
-export(int, 0, 100) var slide := 0
+export(int, 0, 100) var slide := 0 setget set_slide
 
 
 
@@ -16,7 +16,7 @@ var _slides : Array
 ## OnReady Variables
 onready var control : Control = get_node("Control")
 
-onready var slide_texture : TextureRect
+onready var slide_texture : TextureRect = get_node("Control/TextureRect/MarginContainer/SlideTexture")
 
 onready var prev : Button = get_node("Control/Prev")
 
@@ -35,7 +35,7 @@ func _ready() -> void:
 ## Public Methods
 func show(slides : Array, slide := 0) -> void:
 	_slides = slides
-	self.slide = slide
+	set_slide(slide)
 	
 	control.show()
 
@@ -69,14 +69,14 @@ func _on_Prev_pressed():
 	if slide <= 0:
 		return
 	
-	self.slide -= 1
+	set_slide(slide - 1)
 
 
 func _on_Next_pressed():
 	if slide >= _slides.size():
 		return
 	
-	self.slide += 1
+	set_slide(slide + 1)
 
 
 func _on_Done_pressed():

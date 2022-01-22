@@ -33,8 +33,8 @@ config/icon="res://icon.png"
 [autoload]
 
 Session="*res://src/session.gd"
-Settings="*res://src/scenes/settings/settings.tscn"
 Theater="*res://src/scenes/theater/theater.tscn"
+Settings="*res://src/scenes/settings/settings.tscn"
 
 [display]
 

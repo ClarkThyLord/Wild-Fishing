@@ -3,6 +3,16 @@ extends Node
 
 
 
+## Enums
+enum StoryProgress {
+	NEW_GAME = 0,
+	TUTORIAL = 1,
+	STORY_1 = 2,
+	STORY_2 = 4,
+}
+
+
+
 ## Constants
 const NAME = "Wild-Fishing"
 
@@ -10,9 +20,14 @@ const VERSION = "0.0.0"
 
 
 
-## Public Methods
+## Public Variables
+var story_progress : int = StoryProgress.NEW_GAME
+
 var money := 0 setget set_money
 
+
+
+## Private Variables
 var _new_session : Dictionary
 
 
@@ -72,6 +87,11 @@ func open_main_menu() -> void:
 
 func open_map() -> void:
 	get_tree().change_scene("res://src/scenes/map/map.tscn")
+	
+	if not story_progress & StoryProgress.STORY_1:
+		Theater.show([
+			preload("res://assets/story/origin.png")
+		])
 
 
 func open_shop() -> void:
