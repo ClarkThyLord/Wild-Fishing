@@ -1,5 +1,5 @@
 extends Node2D
-## Level Class
+## Level Scene
 
 
 

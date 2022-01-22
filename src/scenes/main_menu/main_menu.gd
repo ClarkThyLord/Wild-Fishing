@@ -1,5 +1,5 @@
 extends Control
-## Scene Main Menu
+## Main Menu Scene
 
 
 
