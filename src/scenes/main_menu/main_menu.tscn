@@ -1,14 +1,71 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://src/scenes/main_menu/main_menu.gd" type="Script" id=1]
 [ext_resource path="res://icon.png" type="Texture" id=2]
 [ext_resource path="res://assets/fonts/cave_story.ttf" type="DynamicFontData" id=3]
 [ext_resource path="res://src/scenes/main_menu/background/background.tscn" type="PackedScene" id=4]
 [ext_resource path="res://assets/icons/github.png" type="Texture" id=5]
+[ext_resource path="res://assets/icons/godot.png" type="Texture" id=6]
+[ext_resource path="res://assets/icons/wild_jam.png" type="Texture" id=7]
 
 [sub_resource type="DynamicFont" id=1]
 size = 64
 font_data = ExtResource( 3 )
+
+[sub_resource type="Animation" id=2]
+resource_name = "Intro"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("SplashScreen:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("SplashScreen/TextureRect:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ ExtResource( 6 ), ExtResource( 7 ) ]
+}
+
+[sub_resource type="Animation" id=3]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("SplashScreen:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ true ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("SplashScreen/TextureRect:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ ExtResource( 6 ) ]
+}
 
 [node name="MainMenu" type="Control"]
 anchor_right = 1.0
@@ -86,6 +143,30 @@ texture_disabled = ExtResource( 5 )
 texture_focused = ExtResource( 5 )
 expand = true
 stretch_mode = 6
+
+[node name="SplashScreen" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.0666667, 0.0666667, 0.0666667, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="SplashScreen"]
+root_node = NodePath("../..")
+autoplay = "Intro"
+anims/Intro = SubResource( 2 )
+anims/RESET = SubResource( 3 )
+
+[node name="TextureRect" type="TextureRect" parent="SplashScreen"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 6 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [connection signal="pressed" from="VBoxContainer/VBoxContainer/Start" to="." method="_on_Start_pressed"]
 [connection signal="pressed" from="VBoxContainer/VBoxContainer/Settings" to="." method="_on_Settings_pressed"]
