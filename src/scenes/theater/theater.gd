@@ -22,6 +22,8 @@ onready var prev : Button = get_node("Control/Prev")
 
 onready var next : Button = get_node("Control/Next")
 
+onready var done : Button = get_node("Control/Done")
+
 
 
 ## Built-In Virtual Methods
@@ -56,6 +58,9 @@ func set_slide(value : int) -> void:
 	
 	if is_instance_valid(next):
 		next.visible = slide < _slides.size() - 1
+	
+	if is_instance_valid(done):
+		done.visible = slide == _slides.size() - 1
 
 
 
@@ -72,3 +77,7 @@ func _on_Next_pressed():
 		return
 	
 	self.slide += 1
+
+
+func _on_Done_pressed():
+	hide()
