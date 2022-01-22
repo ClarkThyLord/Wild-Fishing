@@ -18,6 +18,10 @@ onready var control : Control = get_node("Control")
 
 onready var slide_texture : TextureRect
 
+onready var prev : Button = get_node("Control/Prev")
+
+onready var next : Button = get_node("Control/Next")
+
 
 
 ## Built-In Virtual Methods
@@ -46,6 +50,12 @@ func set_slide(value : int) -> void:
 	
 	if is_instance_valid(slide_texture):
 		slide_texture.texture = _slides[slide]
+	
+	if is_instance_valid(prev):
+		prev.visible = slide > 0
+	
+	if is_instance_valid(next):
+		next.visible = slide < _slides.size() - 1
 
 
 
