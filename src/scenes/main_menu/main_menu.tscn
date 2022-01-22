@@ -125,19 +125,24 @@ rect_min_size = Vector2( 0, 128 )
 alignment = 1
 
 [node name="Start" type="Button" parent="VBoxContainer/VBoxContainer"]
+margin_left = 110.0
 margin_top = 4.0
-margin_right = 516.0
+margin_right = 405.0
 margin_bottom = 44.0
 mouse_default_cursor_shape = 2
-size_flags_horizontal = 5
+size_flags_horizontal = 4
+size_flags_vertical = 4
 custom_fonts/font = SubResource( 1 )
 text = "START"
 
 [node name="Settings" type="Button" parent="VBoxContainer/VBoxContainer"]
+margin_left = 70.0
 margin_top = 48.0
-margin_right = 516.0
+margin_right = 446.0
 margin_bottom = 88.0
 mouse_default_cursor_shape = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 custom_fonts/font = SubResource( 1 )
 text = "SETTINGS"
 

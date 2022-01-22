@@ -17,5 +17,6 @@ margin_bottom = 20.0
 margin_left = 4.0
 margin_right = 64.0
 margin_bottom = 20.0
+mouse_default_cursor_shape = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3

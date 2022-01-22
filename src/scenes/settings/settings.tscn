@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://src/scenes/settings/settings.gd" type="Script" id=1]
+[ext_resource path="res://src/scenes/settings/h_labeled_slider/h_labeled_slider.tscn" type="PackedScene" id=2]
 
 [node name="Settings" type="CanvasLayer"]
 pause_mode = 2
@@ -42,45 +43,66 @@ margin_bottom = 427.0
 
 [node name="ScrollContainer" type="ScrollContainer" parent="Control/PanelContainer/MarginContainer/VBoxContainer"]
 margin_right = 820.0
-margin_bottom = 363.0
+margin_bottom = 351.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 follow_focus = true
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Control/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer"]
 margin_right = 820.0
-margin_bottom = 363.0
+margin_bottom = 351.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="Label" type="Label" parent="Control/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer"]
+[node name="Sound" type="VBoxContainer" parent="Control/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer"]
+margin_right = 820.0
+margin_bottom = 327.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="Control/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/Sound"]
 margin_right = 820.0
 margin_bottom = 20.0
 text = "Sound =========================================================================="
 clip_text = true
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Control/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="Control/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/Sound"]
 margin_top = 24.0
 margin_right = 820.0
 margin_bottom = 44.0
+custom_constants/margin_right = 8
+custom_constants/margin_left = 16
+
+[node name="Master" parent="Control/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/Sound/MarginContainer" instance=ExtResource( 2 )]
+margin_left = 16.0
+margin_right = 812.0
+text = "Master"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer"]
+margin_top = 331.0
+margin_right = 820.0
+margin_bottom = 351.0
 alignment = 1
 
-[node name="Label" type="Label" parent="Control/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer"]
-margin_right = 98.0
+[node name="ResetSettings" type="Button" parent="Control/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer"]
+margin_left = 217.0
+margin_right = 413.0
 margin_bottom = 20.0
-text = "   Master"
+mouse_default_cursor_shape = 2
+text = "RESET SETTINGS"
 
-[node name="HSlider" type="HSlider" parent="Control/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer"]
-margin_left = 102.0
-margin_right = 820.0
+[node name="ResetSession" type="Button" parent="Control/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer"]
+margin_left = 417.0
+margin_right = 602.0
 margin_bottom = 20.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
+mouse_default_cursor_shape = 2
+text = "RESET SESSION"
 
 [node name="HSeparator" type="HSeparator" parent="Control/PanelContainer/MarginContainer/VBoxContainer"]
-margin_top = 367.0
+margin_top = 355.0
 margin_right = 820.0
 margin_bottom = 371.0
+custom_constants/separation = 16
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Control/PanelContainer/MarginContainer/VBoxContainer"]
 margin_top = 375.0
@@ -89,34 +111,13 @@ margin_bottom = 395.0
 custom_constants/separation = 16
 alignment = 1
 
-[node name="Reset" type="Button" parent="Control/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
-margin_right = 256.0
-margin_bottom = 20.0
-mouse_default_cursor_shape = 2
-size_flags_horizontal = 3
-text = "RESET"
-
-[node name="VSeparator" type="VSeparator" parent="Control/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
-margin_left = 272.0
-margin_right = 276.0
-margin_bottom = 20.0
-
 [node name="Confirm" type="Button" parent="Control/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
-margin_left = 292.0
-margin_right = 548.0
+margin_left = 356.0
+margin_right = 463.0
 margin_bottom = 20.0
 mouse_default_cursor_shape = 2
-size_flags_horizontal = 3
 text = "CONFIRM"
 
-[node name="Cancel" type="Button" parent="Control/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
-margin_left = 564.0
-margin_right = 820.0
-margin_bottom = 20.0
-mouse_default_cursor_shape = 2
-size_flags_horizontal = 3
-text = "CANCEL"
-
-[connection signal="pressed" from="Control/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Reset" to="." method="_on_Reset_pressed"]
+[connection signal="pressed" from="Control/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer/ResetSettings" to="." method="_on_Reset_pressed"]
+[connection signal="pressed" from="Control/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer/ResetSession" to="." method="_on_Reset_pressed"]
 [connection signal="pressed" from="Control/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Confirm" to="." method="_on_Confirm_pressed"]
-[connection signal="pressed" from="Control/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Cancel" to="." method="_on_Cancel_pressed"]

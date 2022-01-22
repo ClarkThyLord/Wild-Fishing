@@ -7,14 +7,20 @@
 [ext_resource path="res://assets/themes/scroll_v/scroll_v.png" type="Texture" id=6]
 
 [sub_resource type="StyleBoxEmpty" id=13]
+content_margin_left = 74.0
+content_margin_right = 74.0
 
 [sub_resource type="StyleBoxTexture" id=14]
+content_margin_left = 74.0
+content_margin_right = 74.0
 texture = ExtResource( 1 )
 region_rect = Rect2( 0, 0, 202, 42 )
 margin_left = 74.0
 margin_right = 74.0
 
 [sub_resource type="StyleBoxTexture" id=15]
+content_margin_left = 74.0
+content_margin_right = 74.0
 texture = ExtResource( 2 )
 region_rect = Rect2( 0, 0, 202, 42 )
 margin_left = 74.0
