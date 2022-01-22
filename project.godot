@@ -34,6 +34,7 @@ config/icon="res://icon.png"
 
 Session="*res://src/session.gd"
 Settings="*res://src/scenes/settings/settings.tscn"
+Theater="*res://src/scenes/theater/theater.tscn"
 
 [display]
 
