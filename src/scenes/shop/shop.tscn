@@ -1,15 +1,11 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://src/scenes/shop/shop.gd" type="Script" id=1]
 [ext_resource path="res://assets/fonts/cave_story.ttf" type="DynamicFontData" id=2]
-[ext_resource path="res://icon.png" type="Texture" id=3]
+[ext_resource path="res://src/scenes/shop/item/item.tscn" type="PackedScene" id=3]
 
 [sub_resource type="DynamicFont" id=2]
 size = 64
-font_data = ExtResource( 2 )
-
-[sub_resource type="DynamicFont" id=1]
-size = 18
 font_data = ExtResource( 2 )
 
 [node name="Shop" type="PanelContainer"]
@@ -87,94 +83,4 @@ margin_bottom = 458.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="Item" type="ColorRect" parent="MarginContainer/VBoxContainer/ScrollContainer/Items"]
-margin_right = 948.0
-margin_bottom = 116.0
-rect_min_size = Vector2( 0, 116 )
-color = Color( 0.243137, 0.152941, 0.137255, 0.627451 )
-
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/ScrollContainer/Items/Item"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = 8.0
-margin_top = 8.0
-margin_right = -8.0
-margin_bottom = -8.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="ColorRect" type="ColorRect" parent="MarginContainer/VBoxContainer/ScrollContainer/Items/Item/HBoxContainer"]
-margin_right = 100.0
-margin_bottom = 100.0
-rect_min_size = Vector2( 100, 100 )
-color = Color( 0, 0, 0, 0.196078 )
-
-[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/ScrollContainer/Items/Item/HBoxContainer/ColorRect"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = 4.0
-margin_top = 4.0
-margin_right = -4.0
-margin_bottom = -4.0
-texture = ExtResource( 3 )
-stretch_mode = 6
-__meta__ = {
-"_edit_use_anchors_": true
-}
-
-[node name="VSeparator" type="VSeparator" parent="MarginContainer/VBoxContainer/ScrollContainer/Items/Item/HBoxContainer"]
-margin_left = 104.0
-margin_right = 120.0
-margin_bottom = 100.0
-custom_constants/separation = 16
-
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/ScrollContainer/Items/Item/HBoxContainer"]
-margin_left = 124.0
-margin_right = 736.0
-margin_bottom = 100.0
-size_flags_horizontal = 3
-
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/ScrollContainer/Items/Item/HBoxContainer/VBoxContainer"]
-margin_right = 612.0
-margin_bottom = 20.0
-
-[node name="Name" type="Label" parent="MarginContainer/VBoxContainer/ScrollContainer/Items/Item/HBoxContainer/VBoxContainer/HBoxContainer"]
-margin_right = 441.0
-margin_bottom = 20.0
-size_flags_horizontal = 3
-text = "NAME"
-
-[node name="Price" type="Label" parent="MarginContainer/VBoxContainer/ScrollContainer/Items/Item/HBoxContainer/VBoxContainer/HBoxContainer"]
-margin_left = 445.0
-margin_right = 612.0
-margin_bottom = 20.0
-text = "| $     0000000"
-
-[node name="Description" type="Label" parent="MarginContainer/VBoxContainer/ScrollContainer/Items/Item/HBoxContainer/VBoxContainer"]
-margin_top = 24.0
-margin_right = 612.0
-margin_bottom = 100.0
-size_flags_vertical = 3
-custom_fonts/font = SubResource( 1 )
-text = "DESCRIPTION"
-
-[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/VBoxContainer/ScrollContainer/Items/Item/HBoxContainer"]
-margin_left = 740.0
-margin_right = 932.0
-margin_bottom = 100.0
-alignment = 1
-
-[node name="Buy" type="Button" parent="MarginContainer/VBoxContainer/ScrollContainer/Items/Item/HBoxContainer/VBoxContainer2"]
-margin_top = 2.0
-margin_right = 192.0
-margin_bottom = 48.0
-rect_min_size = Vector2( 0, 46 )
-text = "BUY"
-
-[node name="Use" type="Button" parent="MarginContainer/VBoxContainer/ScrollContainer/Items/Item/HBoxContainer/VBoxContainer2"]
-margin_top = 52.0
-margin_right = 192.0
-margin_bottom = 98.0
-rect_min_size = Vector2( 0, 46 )
-text = "USE"
+[node name="Item" parent="MarginContainer/VBoxContainer/ScrollContainer/Items" instance=ExtResource( 3 )]
