@@ -14,9 +14,12 @@ var _slides : Array
 
 
 ## OnReady Variables
+
 onready var control : Control = get_node("Control")
 
 onready var slide_texture : TextureRect = get_node("Control/TextureRect/MarginContainer/SlideTexture")
+
+onready var title : Label  = get_node("Control/Title")
 
 onready var prev : Button = get_node("Control/Prev")
 
@@ -33,7 +36,10 @@ func _ready() -> void:
 
 
 ## Public Methods
-func show(slides : Array, slide := 0) -> void:
+func show(title : String, slides : Array, slide := 0) -> void:
+	if is_instance_valid(self.title):
+		self.title.text = title
+	
 	_slides = slides
 	set_slide(slide)
 	

@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://assets/fonts/cave_story.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://assets/themes/panel/panel.png" type="Texture" id=2]
@@ -7,7 +7,13 @@
 [ext_resource path="res://assets/scenes/theater/button.pressed.png" type="Texture" id=5]
 
 [sub_resource type="DynamicFont" id=1]
-size = 48
+size = 64
+outline_size = 6
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 32
 font_data = ExtResource( 1 )
 
 [sub_resource type="StyleBoxTexture" id=3]
@@ -25,6 +31,18 @@ expand_margin_left = 12.0
 expand_margin_right = 12.0
 expand_margin_top = 12.0
 expand_margin_bottom = 12.0
+
+[sub_resource type="StyleBoxTexture" id=6]
+content_margin_left = 32.0
+content_margin_right = 32.0
+texture = ExtResource( 5 )
+region_rect = Rect2( 0, 0, 5, 5 )
+
+[sub_resource type="StyleBoxTexture" id=5]
+content_margin_left = 32.0
+content_margin_right = 32.0
+texture = ExtResource( 3 )
+region_rect = Rect2( 0, 0, 5, 5 )
 
 [node name="Theater" type="CanvasLayer"]
 layer = 9
@@ -67,6 +85,18 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Title" type="Label" parent="Control"]
+anchor_right = 1.0
+margin_top = 8.0
+margin_bottom = 20.0
+custom_fonts/font = SubResource( 1 )
+text = "TITLE"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="Prev" type="Button" parent="Control"]
 anchor_top = 1.0
 anchor_bottom = 1.0
@@ -75,7 +105,7 @@ margin_top = -63.0
 margin_right = 80.0
 margin_bottom = -23.0
 mouse_default_cursor_shape = 2
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = SubResource( 4 )
 custom_styles/hover = SubResource( 3 )
 custom_styles/pressed = SubResource( 3 )
 custom_styles/focus = SubResource( 3 )
@@ -95,7 +125,7 @@ margin_top = -63.0
 margin_right = -23.0
 margin_bottom = -23.0
 mouse_default_cursor_shape = 2
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = SubResource( 4 )
 custom_styles/hover = SubResource( 3 )
 custom_styles/pressed = SubResource( 3 )
 custom_styles/focus = SubResource( 3 )
@@ -111,16 +141,16 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -164.0
-margin_top = -60.0
-margin_right = -24.0
-margin_bottom = -23.0
+margin_left = -135.0
+margin_top = -75.0
+margin_right = -10.0
+margin_bottom = -11.0
 mouse_default_cursor_shape = 2
-custom_fonts/font = SubResource( 1 )
-custom_styles/hover = SubResource( 3 )
-custom_styles/pressed = SubResource( 3 )
-custom_styles/focus = SubResource( 3 )
-custom_styles/normal = SubResource( 2 )
+custom_fonts/font = SubResource( 4 )
+custom_styles/hover = SubResource( 6 )
+custom_styles/pressed = SubResource( 6 )
+custom_styles/focus = SubResource( 6 )
+custom_styles/normal = SubResource( 5 )
 text = "DONE"
 __meta__ = {
 "_edit_use_anchors_": false
