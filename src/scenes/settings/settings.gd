@@ -47,3 +47,8 @@ func _on_Confirm_pressed():
 
 func _on_Cancel_pressed():
 	hide()
+
+
+func _on_Reset_pressed():
+	Session.reset()
+	hide()

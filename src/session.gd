@@ -78,6 +78,7 @@ func load_session(path := "user://session.save") -> void:
 
 func reset() -> void:
 	_set_session(_new_session.duplicate(true))
+	save_session()
 	open_main_menu()
 
 
