@@ -32,10 +32,15 @@ func _input(event : InputEvent) -> void:
 
 ## Public Methods
 func show() -> void:
+	if Session.get_intro():
+		return
+		
+	get_tree().paused = true
 	control.show()
 
 
 func hide() -> void:
+	get_tree().paused = false
 	control.hide()
 
 
