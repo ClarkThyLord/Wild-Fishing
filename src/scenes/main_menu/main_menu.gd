@@ -2,10 +2,12 @@ extends Control
 ## Scene Main Menu
 
 
+
 ## OnReady Variables
 onready var animation_player : AnimationPlayer = get_node("AnimationPlayer")
 
 onready var start : Button = get_node("VBoxContainer/VBoxContainer/Start")
+
 
 
 ## Built-In Virtual Methods
