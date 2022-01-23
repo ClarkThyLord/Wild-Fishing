@@ -66,6 +66,63 @@ var _items := {
 		16.0,
 		16.0
 	),
+	"Rigged Boat": BoatItem.new(
+		preload("res://assets/scenes/level/boat/rigged_boat.png"),
+		"A wood boat fitted to be more comfortable.",
+		250,
+		20.0
+	),
+#	"": LineItem.new(
+#		preload(""),
+#		"",
+#		0,
+#		.0
+#	),
+#	"": HookItem.new(
+#		preload(""),
+#		"",
+#		0,
+#		.0,
+#		.0
+#	),
+	"": BoatItem.new(
+		preload("res://assets/scenes/level/boat/sheeted_boat.png"),
+		"A metal sheet makes the boat's hull lighter.",
+		0,
+		24.0
+	),
+#	"": LineItem.new(
+#		preload(""),
+#		"",
+#		0,
+#		.0
+#	),
+#	"": HookItem.new(
+#		preload(""),
+#		"",
+#		0,
+#		.0,
+#		.0
+#	),
+#	"": BoatItem.new(
+#		preload(""),
+#		"",
+#		0,
+#		.0
+#	),
+#	"": LineItem.new(
+#		preload(""),
+#		"",
+#		0,
+#		.0
+#	),
+#	"": HookItem.new(
+#		preload(""),
+#		"",
+#		0,
+#		.0,
+#		.0
+#	),
 	"Boating Lessons": UpgradeItem.new(
 		preload("res://assets/items/boating_lessons.png"),
 		"Allows you to explore a new area on the Map.",
