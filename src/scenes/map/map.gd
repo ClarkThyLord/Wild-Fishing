@@ -6,11 +6,15 @@ extends Node
 ## OnReady Variables
 onready var money : Label = get_node("Texture/InfoPanel/Money")
 
+onready var travel : ColorRect = get_node("Travel")
+
 
 
 ## Built-In Virtual Methods
 func _ready() -> void:
 	money.text = "$     %07d" % Session.money
+	
+	travel.visible = false
 	
 	if not "Boating Lessons" in Session.inventory:
 		_get_area_text("Bay").text = "?"
@@ -50,6 +54,11 @@ func _on_Area_input_event(
 	if event is InputEventMouseButton:
 		if event.pressed:
 			return
+		
+		travel.visible = true
+		yield(get_tree(), "idle_frame")
+		yield(get_tree(), "idle_frame")
+		yield(get_tree(), "idle_frame")
 		
 		match area_name:
 			"Shop":
