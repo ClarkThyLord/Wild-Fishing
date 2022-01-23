@@ -20,10 +20,11 @@ func _ready() -> void:
 		var item : Item = shop_items[item_name]
 		
 		var item_control := ItemControl.instance()
-		
-		item_control.item_texture = item.get_texture()
-		item_control.item_name = item_name
-		item_control.item_description = item.get_description()
-		item_control.item_price = item.get_price()
-		
 		items.add_child(item_control)
+		item_control.set_item(item)
+
+
+
+## Private Methods
+func _on_Exit_pressed():
+	Session.open_map()

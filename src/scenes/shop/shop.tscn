@@ -60,6 +60,7 @@ alignment = 2
 margin_left = 444.0
 margin_right = 649.0
 margin_bottom = 40.0
+mouse_default_cursor_shape = 2
 text = "EXIT"
 
 [node name="HSeparator" type="HSeparator" parent="MarginContainer/VBoxContainer"]
@@ -81,3 +82,5 @@ margin_right = 948.0
 margin_bottom = 458.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/HBoxContainer/Exit" to="." method="_on_Exit_pressed"]

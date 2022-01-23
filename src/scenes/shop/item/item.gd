@@ -4,6 +4,13 @@ extends ColorRect
 
 
 
+## Signals
+signal bought
+
+signal used
+
+
+
 ## Exported Variables
 export var item_texture : Texture setget set_item_texture
 
@@ -12,6 +19,11 @@ export var item_name := "" setget set_item_name
 export var item_description := "" setget set_item_description
 
 export var item_price := -1 setget set_item_price
+
+
+
+## Private Variables
+var _item : Item
 
 
 
@@ -36,6 +48,7 @@ func _ready() -> void:
 	set_item_name(item_name)
 	set_item_price(item_price)
 	set_item_description(item_description)
+
 
 
 ## Public Methods
@@ -65,3 +78,21 @@ func set_item_price(value : int) -> void:
 	
 	if is_instance_valid(item_price_ref):
 		item_price_ref.text = "| $     %07d" % item_price
+
+
+func set_item(item : Item) -> void:
+	_item = item
+	
+	set_item_texture(item.get_texture())
+	set_item_name(item_name)
+	set_item_description(item.get_description())
+	set_item_price(item.get_price())
+
+
+## Private Methods
+func _on_Buy_pressed():
+	emit_signal("bought")
+
+
+func _on_Use_pressed():
+	emit_signal("used")
