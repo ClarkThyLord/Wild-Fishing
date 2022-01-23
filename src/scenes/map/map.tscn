@@ -95,7 +95,7 @@ __meta__ = {
 [node name="Bay" type="Area2D" parent="."]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Bay"]
-polygon = PoolVector2Array( 944, 306, 882, 280, 840, 240, 808, 182, 808, 74, 859, 36, 881, 0, 1024, 0, 1024, 206 )
+polygon = PoolVector2Array( 944, 306, 882, 280, 840, 240, 808, 182, 808, 74, 825, 64, 1024, 64, 1024, 206 )
 
 [node name="Label" type="Label" parent="Bay"]
 margin_left = 878.0
