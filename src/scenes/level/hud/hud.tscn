@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://src/scenes/level/hud/hud.gd" type="Script" id=1]
 [ext_resource path="res://assets/fonts/cave_story.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://assets/scenes/level/hud/info_panel.png" type="Texture" id=3]
+[ext_resource path="res://assets/scenes/level/hud/options_panel.png" type="Texture" id=4]
 
 [sub_resource type="DynamicFont" id=1]
 size = 64
@@ -104,4 +105,68 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Options" type="TextureRect" parent="."]
+margin_right = 205.0
+margin_bottom = 64.0
+rect_min_size = Vector2( 0, 64 )
+texture = ExtResource( 4 )
+expand = true
+stretch_mode = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Options"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_constants/separation = 32
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Map" type="Button" parent="Options/HBoxContainer"]
+margin_left = 33.0
+margin_right = 80.0
+margin_bottom = 64.0
+mouse_default_cursor_shape = 2
+custom_colors/font_color_disabled = Color( 0.243137, 0.152941, 0.137255, 0.607843 )
+custom_colors/font_color_focus = Color( 0.243137, 0.152941, 0.137255, 1 )
+custom_colors/font_color = Color( 0.243137, 0.152941, 0.137255, 1 )
+custom_colors/font_color_hover = Color( 0.427451, 0.298039, 0.254902, 1 )
+custom_colors/font_color_pressed = Color( 0.243137, 0.152941, 0.137255, 1 )
+custom_styles/hover = SubResource( 4 )
+custom_styles/pressed = SubResource( 4 )
+custom_styles/focus = SubResource( 4 )
+custom_styles/disabled = SubResource( 4 )
+custom_styles/normal = SubResource( 4 )
+text = "MAP"
+flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Rest" type="Button" parent="Options/HBoxContainer"]
+margin_left = 112.0
+margin_right = 171.0
+margin_bottom = 64.0
+mouse_default_cursor_shape = 2
+custom_colors/font_color_disabled = Color( 0.243137, 0.152941, 0.137255, 0.607843 )
+custom_colors/font_color_focus = Color( 0.243137, 0.152941, 0.137255, 1 )
+custom_colors/font_color = Color( 0.243137, 0.152941, 0.137255, 1 )
+custom_colors/font_color_hover = Color( 0.427451, 0.298039, 0.254902, 1 )
+custom_colors/font_color_pressed = Color( 0.243137, 0.152941, 0.137255, 1 )
+custom_styles/hover = SubResource( 4 )
+custom_styles/pressed = SubResource( 4 )
+custom_styles/focus = SubResource( 4 )
+custom_styles/disabled = SubResource( 4 )
+custom_styles/normal = SubResource( 4 )
+text = "REST"
+flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [connection signal="pressed" from="InfoPanel/Settings" to="." method="_on_Settings_pressed"]
+[connection signal="pressed" from="Options/HBoxContainer/Map" to="." method="_on_Map_pressed"]
+[connection signal="pressed" from="Options/HBoxContainer/Rest" to="." method="_on_Rest_pressed"]
