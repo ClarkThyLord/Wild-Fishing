@@ -154,6 +154,13 @@ func _on_Buy_pressed():
 	Session.money -= item_price
 	Session.inventory.append(item_name)
 	
+	if _item is BoatItem:
+			Session.boat = item_name
+	elif _item is LineItem:
+			Session.line = item_name
+	elif _item is HookItem:
+			Session.hook = item_name
+	
 	emit_signal("bought")
 
 
