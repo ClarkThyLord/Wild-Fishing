@@ -111,9 +111,74 @@ __meta__ = {
 "_edit_use_anchors_": true
 }
 
+[node name="ShallowWaters" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ShallowWaters"]
+polygon = PoolVector2Array( 0, 597, 0, 539, 52, 490, 150, 455, 263, 434, 335, 422, 377, 387, 452, 276, 532, 185, 622, 149, 702, 87, 721, 68, 775, 64, 803, 67, 802, 187, 830, 239, 698, 381, 686, 414, 588, 455, 464, 485, 409, 538, 327, 600 )
+
+[node name="Label" type="Label" parent="ShallowWaters"]
+margin_left = 460.0
+margin_top = 323.0
+margin_right = 625.0
+margin_bottom = 406.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 2 )
+text = "Shallow
+Waters"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="Sea" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Sea"]
+polygon = PoolVector2Array( 0, 532, 1, 394, 68, 381, 159, 369, 179, 332, 165, 314, 188, 300, 210, 295, 257, 262, 265, 224, 297, 203, 306, 181, 324, 175, 334, 120, 325, 114, 332, 88, 368, 80, 394, 58, 406, 24, 403, 0, 684, -1, 684, 63, 709, 68, 625, 140, 528, 179, 499, 209, 450, 263, 372, 382, 330, 411, 150, 446, 44, 485 )
+
+[node name="Label" type="Label" parent="Sea"]
+margin_left = 295.0
+margin_top = 189.0
+margin_right = 460.0
+margin_bottom = 272.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 2 )
+text = "Ocean"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="TheDeep" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="TheDeep"]
+polygon = PoolVector2Array( 0, 388, 67, 373, 151, 363, 165, 353, 168, 330, 160, 327, 158, 310, 173, 298, 209, 288, 235, 272, 254, 259, 258, 237, 263, 215, 291, 201, 303, 176, 319, 171, 328, 128, 320, 121, 318, 100, 331, 82, 360, 73, 386, 57, 397, 28, 397, 0, 0, 0 )
+
+[node name="Label" type="Label" parent="TheDeep"]
+margin_left = 93.0
+margin_top = 109.0
+margin_right = 258.0
+margin_bottom = 192.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 2 )
+text = "The
+Deep"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
 [connection signal="input_event" from="Shop" to="." method="_on_Area_input_event" binds= [ "Shop" ]]
 [connection signal="mouse_exited" from="Shop" to="." method="_on_Area_mouse_exited" binds= [ "Shop" ]]
 [connection signal="input_event" from="Coast" to="." method="_on_Area_input_event" binds= [ "Coast" ]]
 [connection signal="mouse_exited" from="Coast" to="." method="_on_Area_mouse_exited" binds= [ "Coast" ]]
 [connection signal="input_event" from="Bay" to="." method="_on_Area_input_event" binds= [ "Bay" ]]
 [connection signal="mouse_exited" from="Bay" to="." method="_on_Area_mouse_exited" binds= [ "Bay" ]]
+[connection signal="input_event" from="ShallowWaters" to="." method="_on_Area_input_event" binds= [ "ShallowWaters" ]]
+[connection signal="mouse_exited" from="ShallowWaters" to="." method="_on_Area_mouse_exited" binds= [ "ShallowWaters" ]]
+[connection signal="input_event" from="Sea" to="." method="_on_Area_input_event" binds= [ "Sea" ]]
+[connection signal="mouse_exited" from="Sea" to="." method="_on_Area_mouse_exited" binds= [ "Sea" ]]
+[connection signal="input_event" from="TheDeep" to="." method="_on_Area_input_event" binds= [ "TheDeep" ]]
+[connection signal="mouse_exited" from="TheDeep" to="." method="_on_Area_mouse_exited" binds= [ "TheDeep" ]]

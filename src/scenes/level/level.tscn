@@ -237,6 +237,7 @@ anims/RESET = SubResource( 10 )
 anims/Reel = SubResource( 11 )
 
 [node name="Background" type="Node2D" parent="."]
+pause_mode = 2
 scale = Vector2( 8, 8 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Background"]
