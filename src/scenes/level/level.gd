@@ -122,10 +122,10 @@ func _process(delta : float) -> void:
 		hook.hook_state = hook.HookStates.RISING
 	
 	if playing:
-		if _depth < _stage.get_stage_depth() - (300 / 16):
-			camera.position.y = 300 + _depth * 16
+		if _depth < get_line_limit():
+			camera.position.y = 300 + _depth * Session.get_hook_used().get_plunging_speed()
 		else:
-			hook.position.y = clamp(hook.position.y + 16, -INF, 200)
+			hook.position.y = clamp(hook.position.y + Session.get_hook_used().get_plunging_speed(), -INF, 200)
 			if _game_state == GameStates.FISHING and hook.position.y >= 200:
 				_game_state = GameStates.REELING
 	
@@ -163,7 +163,7 @@ func set_stage(value : int) -> void:
 	wall_left.wall_points = _stage.get_wall_points()
 	wall_right.wall_points = _stage.get_wall_points()
 	level_floor.position.y = _stage.get_stage_depth() * 16 + 270
-	hud.update_depth_max(_stage.get_stage_depth())
+	hud.update_depth_max(get_line_limit())
 
 
 func get_stage_name(value : int) -> String:
@@ -192,10 +192,14 @@ func start_resting() -> void:
 	hud.start_resting()
 
 
+func get_line_limit() -> float:
+	return min(Session.get_line_used().get_length(), _stage.get_stage_depth())
+
+
 ## Private Methods
 func _set_depth(depth : float) -> void:
 	_depth = clamp(
-			depth, 0, _stage.get_stage_depth() if is_instance_valid(_stage) else INF)
+			depth, 0, get_line_limit() if is_instance_valid(_stage) else INF)
 
 
 func _cast() -> void:
