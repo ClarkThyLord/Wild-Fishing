@@ -42,6 +42,8 @@ var hook := "Fishing Hook"
 ## Private Variables
 var _intro := true
 
+var _level_stage := "COAST"
+
 var _new_session : Dictionary
 
 var _items := {
@@ -89,6 +91,10 @@ func finished_intro() -> void:
 
 func set_money(value : int) -> void:
 	money = clamp(value, 0, INF)
+
+
+func get_level_stage() -> String:
+	return _level_stage
 
 
 func save_session(path := "user://session.save") -> void:
@@ -143,8 +149,9 @@ func open_shop() -> void:
 	get_tree().change_scene("res://src/scenes/shop/shop.tscn")
 
 
-func open_level(stage : String) -> void:
+func open_level(stage_name : String) -> void:
 	get_tree().change_scene("res://src/scenes/level/level.tscn")
+	_level_stage = stage_name
 
 
 func get_items() -> Dictionary:

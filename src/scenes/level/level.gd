@@ -5,7 +5,11 @@ extends Node2D
 
 ## Enums
 enum Stages {
+	COAST,
 	BAY,
+	SHALLOW_WATERS,
+	OCEAN,
+	THE_DEEP,
 }
 
 enum GameStates {
@@ -20,7 +24,7 @@ enum GameStates {
 
 
 ## Exported Variables
-export(Stages) var stage = Stages.BAY setget set_stage
+export(Stages) var stage = Stages.COAST setget set_stage
 
 
 
@@ -72,7 +76,8 @@ onready var ocean_bottom = get_node("Camera2D/OceanBottom")
 func _ready() -> void:
 	randomize()
 	
-	set_stage(stage)
+	set_stage(
+			stage_name_to_enum(Session.get_level_stage()))
 
 
 func _process(delta : float) -> void:
@@ -114,7 +119,8 @@ func _process(delta : float) -> void:
 func set_stage(value : int) -> void:
 	stage = value
 	
-	_stage = load("res://src/scenes/level/stages/" + str(Stages.keys()[stage]).to_lower() + ".gd").new()
+	_stage = load("res://src/scenes/level/stages/"\
+			+ get_stage_name(value).to_lower() + ".gd").new()
 	
 	sky.texture = _stage.get_sky_texture()
 	clouds.texture = _stage.get_clouds_texture()
@@ -129,6 +135,24 @@ func set_stage(value : int) -> void:
 	level_floor.position.y = _stage.get_stage_depth() * 16 + 270
 	hud.update_depth_max(_stage.get_stage_depth())
 
+
+func get_stage_name(value : int) -> String:
+	return Stages.keys()[stage]
+
+
+func stage_name_to_enum(value : String) -> int:
+	match value:
+		"Coast":
+			return Stages.COAST
+		"Bay":
+			return Stages.BAY
+		"ShallowWaters":
+			return Stages.SHALLOW_WATERS
+		"Ocean":
+			return Stages.OCEAN
+		"TheDeep":
+			return Stages.THE_DEEP
+	return Stages.COAST
 
 
 ## Private Methods
