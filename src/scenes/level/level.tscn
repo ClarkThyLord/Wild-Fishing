@@ -296,6 +296,7 @@ z_as_relative = false
 texture = ExtResource( 7 )
 
 [node name="Hook" parent="Camera2D" instance=ExtResource( 3 )]
+process_priority = -1000
 position = Vector2( 0, 150 )
 
 [node name="Objects" type="Node2D" parent="."]

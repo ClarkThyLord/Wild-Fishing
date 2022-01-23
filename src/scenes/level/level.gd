@@ -83,11 +83,6 @@ func _ready() -> void:
 
 
 func _process(delta : float) -> void:
-	line.set_point_position(1, Vector2(
-		hook.global_position.x,
-		hook.global_position.y - 40
-	))
-	
 	if Input.is_action_just_released("game_start"):
 		if _game_state == GameStates.IDLE:
 			_cast()
@@ -119,6 +114,11 @@ func _process(delta : float) -> void:
 				_game_state = GameStates.REELING
 	
 	hud.update_depth(_depth)
+	
+	line.set_point_position(1, Vector2(
+		hook.global_position.x,
+		hook.global_position.y - 40
+	))
 
 
 
