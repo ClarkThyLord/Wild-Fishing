@@ -23,7 +23,7 @@ const VERSION = "0.0.0"
 ## Public Variables
 var story_progress : int = StoryProgress.NEW_GAME
 
-var money := 10000000 setget set_money
+var money := 0 setget set_money
 
 var inventory := [
 	"Wood Boat",
