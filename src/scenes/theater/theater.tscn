@@ -9,7 +9,7 @@
 [sub_resource type="DynamicFont" id=1]
 size = 64
 outline_size = 6
-outline_color = Color( 0, 0, 0, 1 )
+outline_color = Color( 0.243137, 0.152941, 0.137255, 1 )
 font_data = ExtResource( 1 )
 
 [sub_resource type="DynamicFont" id=4]
@@ -45,7 +45,8 @@ texture = ExtResource( 3 )
 region_rect = Rect2( 0, 0, 5, 5 )
 
 [node name="Theater" type="CanvasLayer"]
-layer = 9
+pause_mode = 2
+layer = 11
 script = ExtResource( 4 )
 
 [node name="Control" type="Control" parent="."]
@@ -87,8 +88,9 @@ __meta__ = {
 
 [node name="Title" type="Label" parent="Control"]
 anchor_right = 1.0
-margin_top = 8.0
+margin_top = 12.0
 margin_bottom = 20.0
+custom_colors/font_color = Color( 0.427451, 0.298039, 0.254902, 1 )
 custom_fonts/font = SubResource( 1 )
 text = "TITLE"
 align = 1

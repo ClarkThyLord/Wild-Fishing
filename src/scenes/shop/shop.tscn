@@ -1,8 +1,7 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://src/scenes/shop/shop.gd" type="Script" id=1]
 [ext_resource path="res://assets/fonts/cave_story.ttf" type="DynamicFontData" id=2]
-[ext_resource path="res://src/scenes/shop/item/item.tscn" type="PackedScene" id=3]
 
 [sub_resource type="DynamicFont" id=2]
 size = 64
@@ -82,5 +81,3 @@ margin_right = 948.0
 margin_bottom = 458.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-
-[node name="Item" parent="MarginContainer/VBoxContainer/ScrollContainer/Items" instance=ExtResource( 3 )]

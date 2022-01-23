@@ -85,7 +85,7 @@ margin_bottom = 351.0
 alignment = 1
 
 [node name="ResetSettings" type="Button" parent="Control/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer"]
-margin_left = 217.0
+margin_left = 69.0
 margin_right = 413.0
 margin_bottom = 20.0
 mouse_default_cursor_shape = 2
@@ -93,7 +93,7 @@ text = "RESET SETTINGS"
 
 [node name="ResetSession" type="Button" parent="Control/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer"]
 margin_left = 417.0
-margin_right = 602.0
+margin_right = 750.0
 margin_bottom = 20.0
 mouse_default_cursor_shape = 2
 text = "RESET SESSION"
@@ -112,8 +112,8 @@ custom_constants/separation = 16
 alignment = 1
 
 [node name="Confirm" type="Button" parent="Control/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
-margin_left = 356.0
-margin_right = 463.0
+margin_left = 282.0
+margin_right = 537.0
 margin_bottom = 20.0
 mouse_default_cursor_shape = 2
 text = "CONFIRM"

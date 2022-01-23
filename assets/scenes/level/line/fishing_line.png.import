@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/boat.png-5a70c827f2519dd9f0d073ef07fcfebc.stex"
+path="res://.import/fishing_line.png-3059808ca55b3a620c6635b49661b0cf.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/scenes/level/boat/boat.png"
-dest_files=[ "res://.import/boat.png-5a70c827f2519dd9f0d073ef07fcfebc.stex" ]
+source_file="res://assets/scenes/level/line/fishing_line.png"
+dest_files=[ "res://.import/fishing_line.png-3059808ca55b3a620c6635b49661b0cf.stex" ]
 
 [params]
 

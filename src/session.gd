@@ -25,12 +25,45 @@ var story_progress : int = StoryProgress.NEW_GAME
 
 var money := 0 setget set_money
 
+var inventory := [
+	"Wood Boat",
+	"Fishing Line",
+	"Fishing Hook",
+]
+
+var boat := ""
+
+var roap := ""
+
+var hook := ""
+
 
 
 ## Private Variables
 var _intro := true
 
 var _new_session : Dictionary
+
+var _items := {
+	"Wood Boat": Item.new(
+		Item.ItemType.BOAT,
+		preload("res://assets/scenes/level/boat/wood_boat.png"),
+		"Simple wooden boat.",
+		0
+	),
+	"Fishing Line": Item.new(
+		Item.ItemType.LINE,
+		preload("res://assets/scenes/level/line/fishing_line.png"),
+		"Simple wooden boat.",
+		0
+	),
+	"Fishing Hook": Item.new(
+		Item.ItemType.HOOK,
+		preload("res://assets/scenes/level/hook/fishing_hook.png"),
+		"Simple wooden boat.",
+		0
+	),
+}
 
 
 
@@ -112,6 +145,10 @@ func open_shop() -> void:
 
 func open_level(stage : String) -> void:
 	get_tree().change_scene("res://src/scenes/level/level.tscn")
+
+
+func get_items() -> Dictionary:
+	return _items
 
 
 

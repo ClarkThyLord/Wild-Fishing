@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/hook.png-6c4f80b2acb081f5f1bf28765470a3d1.stex"
+path="res://.import/fishing_hook.png-c252abd0f499cf1fa55e41a4cb883536.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/scenes/level/hook/hook.png"
-dest_files=[ "res://.import/hook.png-6c4f80b2acb081f5f1bf28765470a3d1.stex" ]
+source_file="res://assets/scenes/level/hook/fishing_hook.png"
+dest_files=[ "res://.import/fishing_hook.png-c252abd0f499cf1fa55e41a4cb883536.stex" ]
 
 [params]
 
