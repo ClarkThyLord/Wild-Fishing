@@ -63,7 +63,7 @@ size_flags_vertical = 3
 [node name="Label" type="Label" parent="Control/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/Audio"]
 margin_right = 820.0
 margin_bottom = 20.0
-text = "Audio= =========================================================================="
+text = "Audio ==========================================================================="
 clip_text = true
 
 [node name="MarginContainer" type="MarginContainer" parent="Control/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/Audio"]
