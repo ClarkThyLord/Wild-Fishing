@@ -14,6 +14,8 @@ var _depth := 0.0
 
 
 # OnReady Variables
+onready var resting : ColorRect = get_node("Rest")
+
 onready var map : Button = get_node("Options/HBoxContainer/Map")
 
 onready var rest : Button = get_node("Options/HBoxContainer/Rest")
@@ -25,6 +27,13 @@ onready var depth : Label = get_node("InfoPanel/Depth")
 onready var depth_max : Label = get_node("InfoPanel/DepthMax")
 
 onready var settings : Button = get_node("InfoPanel/Settings")
+
+
+
+
+## Built-In Virtual Methods
+func _ready() -> void:
+	resting.visible = false
 
 
 
@@ -48,11 +57,24 @@ func update_depth(value : float) -> void:
 	if is_instance_valid(depth):
 		depth.text = "%.2f ft." % value
 
+
 func update_depth_max(value : float) -> void:
 	if not is_instance_valid(depth_max):
 		return
 	
 	depth_max.text = "%d ft." % value
+
+
+func start_resting() -> void:
+	resting.visible = true
+	rest.disabled = true
+	
+	emit_signal("resting")
+
+
+func stop_resting() -> void:
+	rest.disabled
+	resting.visible = false
 
 
 
@@ -65,7 +87,7 @@ func _on_Rest_pressed():
 	if _depth > 0.0:
 		return
 	
-	emit_signal("resting")
+	start_resting()
 
 
 func _on_Settings_pressed():

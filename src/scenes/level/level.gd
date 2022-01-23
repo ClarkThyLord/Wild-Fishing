@@ -1,4 +1,4 @@
-extends Node2D
+extends Node
 ## Level Scene
 
 
@@ -29,6 +29,8 @@ export(Stages) var stage = Stages.COAST setget set_stage
 
 
 ## Private Variables
+var _resting := false
+
 var _game_state : int = GameStates.IDLE
 
 var _stage : Stage
@@ -83,6 +85,9 @@ func _ready() -> void:
 
 
 func _process(delta : float) -> void:
+	if _resting:
+		return
+	
 	if Input.is_action_just_released("game_start"):
 		if _game_state == GameStates.IDLE:
 			_cast()
@@ -135,6 +140,10 @@ func set_stage(value : int) -> void:
 	ocean_bottom.texture = _stage.get_ocean_texture()
 	waves_front.texture = _stage.get_waves_texture()
 	waves_back.texture = _stage.get_waves_texture()
+	
+	for child in objects.get_children():
+		objects.remove_child(child)
+		child.queue_free()
 	
 	_stage.random(objects)
 	wall_left.wall_points = _stage.get_wall_points()
@@ -202,3 +211,11 @@ func _on_Hook_hit():
 		_stop_reeling()
 	else:
 		_start_reeling()
+
+
+func _on_HUD_resting():
+	yield(get_tree(), "idle_frame")
+	yield(get_tree(), "idle_frame")
+	yield(get_tree(), "idle_frame")
+	set_stage(stage)
+	hud.stop_resting()
