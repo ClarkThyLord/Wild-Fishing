@@ -80,6 +80,7 @@ margin_right = 612.0
 margin_bottom = 100.0
 size_flags_vertical = 3
 custom_fonts/font = SubResource( 1 )
+autowrap = true
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="HBoxContainer"]
 margin_left = 740.0
