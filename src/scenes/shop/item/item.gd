@@ -12,6 +12,8 @@ signal used
 
 
 ## Exported Variables
+export var owned := false setget set_owned
+
 export var item_texture : Texture setget set_item_texture
 
 export var item_name := "" setget set_item_name
@@ -52,6 +54,17 @@ func _ready() -> void:
 
 
 ## Public Methods
+func set_owned(value : bool) -> void:
+	owned = value
+	
+	if is_instance_valid(item_price_ref):
+		item_price_ref.visible = not owned
+	if is_instance_valid(buy):
+		buy.visible = not owned
+	if is_instance_valid(use):
+		use.visible = not owned
+
+
 func set_item_texture(value : Texture) -> void:
 	item_texture = value
 	
@@ -80,13 +93,15 @@ func set_item_price(value : int) -> void:
 		item_price_ref.text = "| $     %07d" % item_price
 
 
-func set_item(item : Item) -> void:
+func set_item(item_name : String, item : Item) -> void:
 	_item = item
 	
 	set_item_texture(item.get_texture())
 	set_item_name(item_name)
 	set_item_description(item.get_description())
 	set_item_price(item.get_price())
+	
+	set_owned(item_name in Session.inventory)
 
 
 ## Private Methods

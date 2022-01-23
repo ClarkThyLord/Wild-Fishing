@@ -21,7 +21,7 @@ func _ready() -> void:
 		
 		var item_control := ItemControl.instance()
 		items.add_child(item_control)
-		item_control.set_item(item)
+		item_control.set_item(item_name, item)
 
 
 
