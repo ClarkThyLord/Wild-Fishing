@@ -80,6 +80,10 @@ onready var line : Line2D = get_node("Background/Line")
 func _ready() -> void:
 	randomize()
 	
+	boat.texture = Session.get_boat_used().get_texture()
+	
+	hud.update_money()
+	
 	set_stage(
 			stage_name_to_enum(Session.get_level_stage()))
 	
