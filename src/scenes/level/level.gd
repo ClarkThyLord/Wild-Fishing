@@ -124,6 +124,9 @@ func _process(delta : float) -> void:
 		hook.global_position.x,
 		hook.global_position.y - 40
 	))
+	
+	if _game_state == GameStates.IDLE and 30 > objects.get_child_count():
+		start_resting()
 
 
 
@@ -169,6 +172,13 @@ func stage_name_to_enum(value : String) -> int:
 		"TheDeep":
 			return Stages.THE_DEEP
 	return Stages.COAST
+
+
+func start_resting() -> void:
+	if not is_instance_valid(hud):
+		return
+	
+	hud.start_resting()
 
 
 ## Private Methods
