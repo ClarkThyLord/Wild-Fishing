@@ -81,7 +81,6 @@ func random(objects : Node2D) -> void:
 	_wall_points.clear()
 	for s in range(_stage_depth + 32):
 		var h = (cos(pow(s, 1.25)) + 1.5) * 2
-		print(h)
 		_wall_points.append(h + 1 + randi() % 4)
 	
 	var objs := 0
@@ -128,3 +127,5 @@ func random(objects : Node2D) -> void:
 		obj.position.y = y
 		
 		objs += 1
+	
+	_fish_count = objs

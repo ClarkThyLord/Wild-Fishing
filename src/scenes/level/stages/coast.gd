@@ -49,7 +49,10 @@ func _init() -> void:
 ## Public Methods
 func random(objects : Node2D) -> void:
 	_wall_points.clear()
-	for s in range(_stage_depth + 32):
+	
+	var stage_end := min(_stage_depth, Session.get_line_used().get_length())
+	
+	for s in range(stage_end + 42):
 		var h = (cos(s / 3) + 1) * 2
 		_wall_points.append(h + 1 + randi() % 4)
 	
@@ -62,7 +65,7 @@ func random(objects : Node2D) -> void:
 	var fish_3 := true
 	
 	var y := 375.0
-	while y < _stage_depth * 16:
+	while y < stage_end * 16:
 		if randf() < 0.6 and objs < 60:
 			continue
 		
@@ -91,3 +94,5 @@ func random(objects : Node2D) -> void:
 		obj.position.y = y
 		
 		objs += 1
+	
+	_fish_count = objs

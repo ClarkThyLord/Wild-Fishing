@@ -136,7 +136,8 @@ func _process(delta : float) -> void:
 		hook.global_position.y - 40
 	))
 	
-	if _game_state == GameStates.IDLE and 30 > objects.get_child_count():
+	if _game_state == GameStates.IDLE\
+			and objects.get_child_count() < _stage.get_fish_count() * 0.1:
 		start_resting()
 
 

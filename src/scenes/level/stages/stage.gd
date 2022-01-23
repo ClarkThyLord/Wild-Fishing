@@ -5,6 +5,8 @@ class_name Stage
 
 
 ## Private Methods
+var _fish_count : int
+
 var _wall_points := []
 
 var _stage_depth : int
@@ -46,3 +48,6 @@ func get_clouds_texture() -> Texture:
 
 func get_sky_texture() -> Texture:
 	return _sky
+
+func get_fish_count() -> int:
+	return _fish_count
