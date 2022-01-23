@@ -307,19 +307,23 @@ func reset() -> void:
 
 func open_main_menu() -> void:
 	get_tree().change_scene("res://src/scenes/main_menu/main_menu.tscn")
+	save_session()
 
 
 func open_map() -> void:
 	get_tree().change_scene("res://src/scenes/map/map.tscn")
+	save_session()
 
 
 func open_shop() -> void:
 	get_tree().change_scene("res://src/scenes/shop/shop.tscn")
+	save_session()
 
 
 func open_level(stage_name : String) -> void:
 	get_tree().change_scene("res://src/scenes/level/level.tscn")
 	_level_stage = stage_name
+	save_session()
 
 
 func get_items() -> Dictionary:
