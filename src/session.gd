@@ -40,6 +40,8 @@ var hook := "Fishing Hook"
 
 
 ## Private Variables
+var _music : AudioStreamPlayer
+
 var _intro := true
 
 var _level_stage := "COAST"
@@ -233,6 +235,12 @@ var _items := {
 
 ## Built-In Virtual Methods
 func _ready() -> void:
+	_music = AudioStreamPlayer.new()
+	add_child(_music)
+	_music.stream = preload("res://assets/audio/slow_stride_loop.ogg")
+	_music.pause_mode = Node.PAUSE_MODE_PROCESS
+	_music.play()
+	
 	_new_session = _get_session().duplicate(true)
 	load_session()
 
