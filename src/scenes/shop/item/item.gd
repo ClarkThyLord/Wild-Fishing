@@ -75,7 +75,7 @@ func set_usable(value : bool) -> void:
 	usable = value
 	
 	if is_instance_valid(use):
-		use.disabled = not usable
+		use.visible = usable
 
 
 func set_using(value : bool) -> void:
@@ -152,6 +152,7 @@ func _on_Buy_pressed():
 		return
 	
 	Session.money -= item_price
+	Session.inventory.append(item_name)
 	
 	emit_signal("bought")
 

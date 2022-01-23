@@ -9,6 +9,7 @@ enum ItemType {
 	BOAT,
 	LINE,
 	HOOK,
+	UPGRADE,
 }
 
 

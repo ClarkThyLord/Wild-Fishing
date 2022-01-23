@@ -1,7 +1,6 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://assets/fonts/cave_story.ttf" type="DynamicFontData" id=1]
-[ext_resource path="res://icon.png" type="Texture" id=2]
 [ext_resource path="res://src/scenes/shop/item/item.gd" type="Script" id=3]
 
 [sub_resource type="DynamicFont" id=1]
@@ -42,7 +41,6 @@ margin_left = 4.0
 margin_top = 4.0
 margin_right = -4.0
 margin_bottom = -4.0
-texture = ExtResource( 2 )
 stretch_mode = 6
 __meta__ = {
 "_edit_use_anchors_": true
@@ -74,6 +72,7 @@ margin_left = 437.0
 margin_right = 612.0
 margin_bottom = 20.0
 rect_min_size = Vector2( 175, 0 )
+text = "| $     -000001"
 
 [node name="Description" type="Label" parent="HBoxContainer/VBoxContainer"]
 margin_top = 24.0
@@ -89,20 +88,23 @@ margin_bottom = 100.0
 alignment = 1
 
 [node name="Buy" type="Button" parent="HBoxContainer/VBoxContainer2"]
-margin_top = 2.0
+margin_top = 27.0
 margin_right = 192.0
-margin_bottom = 48.0
+margin_bottom = 73.0
 rect_min_size = Vector2( 0, 46 )
 mouse_default_cursor_shape = 2
+custom_colors/font_color_disabled = Color( 0.398438, 0.257901, 0.233459, 1 )
 text = "BUY"
 
 [node name="Use" type="Button" parent="HBoxContainer/VBoxContainer2"]
+visible = false
 margin_top = 52.0
 margin_right = 192.0
 margin_bottom = 98.0
 rect_min_size = Vector2( 0, 46 )
 mouse_default_cursor_shape = 2
 custom_colors/font_color_disabled = Color( 0.243137, 0.152941, 0.137255, 1 )
+disabled = true
 text = "USE"
 
 [connection signal="pressed" from="HBoxContainer/VBoxContainer2/Buy" to="." method="_on_Buy_pressed"]

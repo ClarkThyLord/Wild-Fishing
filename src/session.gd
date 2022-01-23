@@ -65,6 +65,18 @@ var _items := {
 		"Simple fishing hook.",
 		0
 	),
+	"Boating Lessons": Item.new(
+		Item.ItemType.UPGRADE,
+		preload("res://assets/items/boating_lessons.png"),
+		"Allows you to explore a new area on the Map.",
+		0
+	),
+	"Sailing Lessons": Item.new(
+		Item.ItemType.UPGRADE,
+		preload("res://assets/items/sailing_lessons.png"),
+		"Allows you to explore a new area on the Map.",
+		10000
+	),
 }
 
 
