@@ -37,6 +37,8 @@ var line := "Fishing Line"
 
 var hook := "Fishing Hook"
 
+var setting_audio_master := 70
+
 
 
 ## Private Variables
@@ -243,6 +245,8 @@ func _ready() -> void:
 	
 	_new_session = _get_session().duplicate(true)
 	load_session()
+	
+	Settings.update_settings()
 
 
 func _exit_tree() -> void:

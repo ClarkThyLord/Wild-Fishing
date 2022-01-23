@@ -20,3 +20,5 @@ margin_bottom = 20.0
 mouse_default_cursor_shape = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+
+[connection signal="value_changed" from="HSlider" to="." method="_on_HSlider_value_changed"]

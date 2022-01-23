@@ -4,6 +4,11 @@ extends HBoxContainer
 
 
 
+## Signals
+signal value_changed(value)
+
+
+
 ## Exported Variables
 export var text := "" setget set_text
 
@@ -69,3 +74,8 @@ func set_value(new_value : float) -> void:
 	if is_instance_valid(h_slider):
 		h_slider.value = value
 
+
+
+## Private Methods
+func _on_HSlider_value_changed(value : float) -> void: 
+	emit_signal("value_changed", value)
