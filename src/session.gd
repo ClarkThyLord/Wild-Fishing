@@ -31,11 +31,11 @@ var inventory := [
 	"Fishing Hook",
 ]
 
-var boat := ""
+var boat := "Wood Boat"
 
-var roap := ""
+var line := "Fishing Line"
 
-var hook := ""
+var hook := "Fishing Hook"
 
 
 
