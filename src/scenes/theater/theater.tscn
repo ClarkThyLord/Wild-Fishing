@@ -81,7 +81,7 @@ margin_left = 32.0
 margin_top = 32.0
 margin_right = 992.0
 margin_bottom = 568.0
-stretch_mode = 6
+stretch_mode = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
