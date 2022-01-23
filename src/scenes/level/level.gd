@@ -82,6 +82,12 @@ func _ready() -> void:
 	
 	set_stage(
 			stage_name_to_enum(Session.get_level_stage()))
+	
+	if not Session.story_progress & Session.StoryProgress.TUTORIAL:
+		Session.story_progress += Session.StoryProgress.TUTORIAL
+		Theater.show("CONTROLS", [
+			preload("res://assets/controls/controls.png")
+		])
 
 
 func _process(delta : float) -> void:

@@ -161,12 +161,6 @@ func open_main_menu() -> void:
 
 func open_map() -> void:
 	get_tree().change_scene("res://src/scenes/map/map.tscn")
-	
-	if not story_progress & StoryProgress.STORY_1:
-		story_progress += StoryProgress.STORY_1
-		Theater.show("The Hunt Begins", [
-			preload("res://assets/story/origin.png")
-		])
 
 
 func open_shop() -> void:

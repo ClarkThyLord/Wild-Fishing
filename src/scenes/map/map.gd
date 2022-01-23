@@ -20,6 +20,12 @@ func _ready() -> void:
 		_get_area_text("Ocean").text = "?"
 	if not "Chartplotter" in Session.inventory:
 		_get_area_text("TheDeep").text = "?"
+	
+	if not Session.story_progress & Session.StoryProgress.STORY_1:
+		Session.story_progress += Session.StoryProgress.STORY_1
+		Theater.show("THE HUNT BEGINS", [
+			preload("res://assets/story/origin.png")
+		])
 
 
 
