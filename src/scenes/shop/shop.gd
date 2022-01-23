@@ -17,14 +17,14 @@ onready var items : VBoxContainer = get_node("MarginContainer/VBoxContainer/Scro
 
 ## Built-In Virtual Methods
 func _ready() -> void:
-	money.text = "$     %07d" % Session.money
-	
 	update_shop()
 
 
 
 ## Public Methods
 func update_shop() -> void:
+	money.text = "$     %07d" % Session.money
+	
 	for children in items.get_children():
 		items.remove_child(children)
 		children.queue_free()
