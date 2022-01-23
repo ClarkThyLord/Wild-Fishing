@@ -214,8 +214,10 @@ func _on_Hook_hit():
 
 
 func _on_HUD_resting():
+	_resting = true
 	yield(get_tree(), "idle_frame")
 	yield(get_tree(), "idle_frame")
 	yield(get_tree(), "idle_frame")
 	set_stage(stage)
 	hud.stop_resting()
+	_resting = false
