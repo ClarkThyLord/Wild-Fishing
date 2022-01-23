@@ -16,6 +16,10 @@ func _ready() -> void:
 		_get_area_text("Bay").text = "?"
 	if not "Sailing Lessons" in Session.inventory:
 		_get_area_text("ShallowWaters").text = "?"
+	if not "Heavy Anchor" in Session.inventory:
+		_get_area_text("Ocean").text = "?"
+	if not "Chartplotter" in Session.inventory:
+		_get_area_text("TheDeep").text = "?"
 
 
 
@@ -50,6 +54,14 @@ func _on_Area_input_event(
 				continue
 			"ShallowWaters":
 				if not "Sailing Lessons" in Session.inventory:
+					return
+				continue
+			"Ocean":
+				if not "Heavy Anchor" in Session.inventory:
+					return
+				continue
+			"TheDeep":
+				if not "Chartplotter" in Session.inventory:
 					return
 				continue
 			_:
