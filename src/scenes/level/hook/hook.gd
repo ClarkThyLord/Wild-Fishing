@@ -1,4 +1,4 @@
-extends Area2D
+extends Node2D
 ## Level Hook Class
 
 
@@ -24,19 +24,29 @@ export(float, 0.0, 1_000.0) var speed := 16.0
 
 
 
-## Private Variables
-var _tween := Tween.new()
-
-
-
 ## OnReady Variables
-onready var animation_player : AnimationPlayer = get_node("AnimationPlayer")
+onready var animation_player : AnimationPlayer = get_node("Area2D/AnimationPlayer")
+
+onready var sprite : Sprite = get_node("Area2D/Sprite")
+
+onready var collision_polygon : CollisionPolygon2D = get_node("Area2D/CollisionPolygon2D")
 
 
 
 ## Built-In Virtual Methods
 func _ready() -> void:
-	connect("area_entered", self, "_on_area_entered")
+	var bm = BitMap.new()
+	bm.create_from_image_alpha(sprite.texture.get_data())
+	var points = bm.opaque_to_polygons(
+		Rect2(
+			0,
+			0,
+			sprite.texture.get_width(),
+			sprite.texture.get_height()
+		)
+	)
+	if points.size() > 0:
+		collision_polygon.set_polygon(points[0])
 
 
 func _process(delta : float) -> void:
@@ -67,7 +77,7 @@ func liquidate() -> int:
 
 
 ## Private Methods
-func _on_area_entered(area : Area2D) -> void:
+func _on_Area2D_area_entered(area : Area2D) -> void:
 	if area.is_in_group("fishes"):
 		area.hooked_by(self)
 	
