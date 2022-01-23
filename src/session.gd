@@ -69,13 +69,25 @@ var _items := {
 		Item.ItemType.UPGRADE,
 		preload("res://assets/items/boating_lessons.png"),
 		"Allows you to explore a new area on the Map.",
-		0
+		1_000
 	),
 	"Sailing Lessons": Item.new(
 		Item.ItemType.UPGRADE,
 		preload("res://assets/items/sailing_lessons.png"),
 		"Allows you to explore a new area on the Map.",
-		10000
+		2_500
+	),
+	"Heavy Anchor": Item.new(
+		Item.ItemType.UPGRADE,
+		preload("res://assets/items/heavy_anchor.png"),
+		"Allows you to explore a new area on the Map.",
+		5_000
+	),
+	"Chartplotter": Item.new(
+		Item.ItemType.UPGRADE,
+		preload("res://assets/items/chartplotter.png"),
+		"Allows you to explore a new area on the Map.",
+		10_000
 	),
 }
 
