@@ -132,18 +132,17 @@ func set_item(item_name : String, item : Item) -> void:
 	
 	set_owned(item_name in Session.inventory)
 	if owned:
-		match _item.get_item_type():
-			Item.ItemType.BOAT:
-				set_usable(true)
-				set_using(item_name == Session.boat)
-			Item.ItemType.LINE:
-				set_usable(true)
-				set_using(item_name == Session.line)
-			Item.ItemType.HOOK:
-				set_usable(true)
-				set_using(item_name == Session.hook)
-			_:
-				set_usable(false)
+		if _item is BoatItem:
+			set_usable(true)
+			set_using(item_name == Session.boat)
+		elif _item is LineItem:
+			set_usable(true)
+			set_using(item_name == Session.line)
+		elif _item is HookItem:
+			set_usable(true)
+			set_using(item_name == Session.hook)
+		else:
+			set_usable(false)
 
 
 ## Private Methods
@@ -161,12 +160,11 @@ func _on_Use_pressed():
 	if not usable or using:
 		return
 	
-	match _item.get_item_type():
-		Item.ItemType.BOAT:
+	if _item is BoatItem:
 			Session.boat = item_name
-		Item.ItemType.LINE:
+	elif _item is LineItem:
 			Session.line = item_name
-		Item.ItemType.HOOK:
+	elif _item is HookItem:
 			Session.hook = item_name
 	
 	emit_signal("used")

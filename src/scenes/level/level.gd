@@ -104,7 +104,7 @@ func _process(delta : float) -> void:
 		_stop_reeling()
 	
 	var playing := false
-	var plunging_speed := 16
+	var plunging_speed : float = Session.get_hook_used().get_plunging_speed()
 	hook.hook_state = hook.HookStates.IDLE
 	if _game_state == GameStates.FISHING:
 		_set_depth(_depth + plunging_speed * delta)

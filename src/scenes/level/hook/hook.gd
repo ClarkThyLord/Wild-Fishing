@@ -35,6 +35,10 @@ onready var collision_polygon : CollisionPolygon2D = get_node("Area2D/CollisionP
 
 ## Built-In Virtual Methods
 func _ready() -> void:
+	var hook_item : HookItem = Session.get_hook_used()
+	sprite.texture = hook_item.get_texture()
+	speed = hook_item.get_strafing_speed()
+	
 	var bm = BitMap.new()
 	bm.create_from_image_alpha(sprite.texture.get_data())
 	var points = bm.opaque_to_polygons(

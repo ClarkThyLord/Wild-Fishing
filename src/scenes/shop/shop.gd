@@ -29,7 +29,7 @@ func update_shop() -> void:
 		items.remove_child(children)
 		children.queue_free()
 	
-	var shop_items := Session.get_items()
+	var shop_items : Dictionary = Session.get_items()
 	for item_name in shop_items:
 		var item : Item = shop_items[item_name]
 		
