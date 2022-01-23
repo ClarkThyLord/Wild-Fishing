@@ -50,12 +50,14 @@ var _items := {
 	"Wood Boat": BoatItem.new(
 		preload("res://assets/scenes/level/boat/wood_boat.png"),
 		"Simple wooden boat.",
-		0
+		0,
+		16.0
 	),
 	"Fishing Line": LineItem.new(
 		preload("res://assets/scenes/level/line/fishing_line.png"),
 		"Simple fishing line.",
-		0
+		0,
+		200.0
 	),
 	"Fishing Hook": HookItem.new(
 		preload("res://assets/scenes/level/hook/fishing_hook.png"),
@@ -171,11 +173,11 @@ func get_items() -> Dictionary:
 	return _items
 
 
-func get_boat_used() -> HookItem:
+func get_boat_used() -> BoatItem:
 	return _items[boat]
 
 
-func get_line_used() -> HookItem:
+func get_line_used() -> LineItem:
 	return _items[line]
 
 
