@@ -58,6 +58,8 @@ _global_script_class_icons={
 
 config/name="Wild-Fishing"
 run/main_scene="res://src/scenes/main_menu/main_menu.tscn"
+boot_splash/image="res://icon.spash.png"
+boot_splash/use_filter=false
 config/icon="res://icon.png"
 
 [autoload]

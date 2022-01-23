@@ -1,6 +1,6 @@
 <p align="center">
 	<a href="https://github.com/ClarkThyLord/Wild-Fishing">
-		<img width="128px" src="./icon.png" alt="" />
+		<img width="128px" src="./icon.splash.png" alt="" />
 		<h1 align="center">
 			Wild-Fishing
 		</h1>
