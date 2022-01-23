@@ -70,6 +70,8 @@ onready var waves_front = get_node("Background/WavesFront")
 
 onready var ocean_bottom = get_node("Camera2D/OceanBottom")
 
+onready var line : Line2D = get_node("Background/Line")
+
 
 
 ## Built-In Virtual Methods
@@ -81,6 +83,11 @@ func _ready() -> void:
 
 
 func _process(delta : float) -> void:
+	line.set_point_position(1, Vector2(
+		hook.global_position.x,
+		hook.global_position.y - 40
+	))
+	
 	if Input.is_action_just_released("game_start"):
 		if _game_state == GameStates.IDLE:
 			_cast()
