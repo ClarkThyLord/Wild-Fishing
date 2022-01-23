@@ -47,44 +47,39 @@ var _level_stage := "COAST"
 var _new_session : Dictionary
 
 var _items := {
-	"Wood Boat": Item.new(
-		Item.ItemType.BOAT,
+	"Wood Boat": BoatItem.new(
 		preload("res://assets/scenes/level/boat/wood_boat.png"),
 		"Simple wooden boat.",
 		0
 	),
-	"Fishing Line": Item.new(
-		Item.ItemType.LINE,
+	"Fishing Line": LineItem.new(
 		preload("res://assets/scenes/level/line/fishing_line.png"),
 		"Simple fishing line.",
 		0
 	),
-	"Fishing Hook": Item.new(
-		Item.ItemType.HOOK,
+	"Fishing Hook": HookItem.new(
 		preload("res://assets/scenes/level/hook/fishing_hook.png"),
 		"Simple fishing hook.",
-		0
+		0,
+		16.0,
+		16.0
 	),
-	"Boating Lessons": Item.new(
-		Item.ItemType.UPGRADE,
+	"Boating Lessons": UpgradeItem.new(
 		preload("res://assets/items/boating_lessons.png"),
 		"Allows you to explore a new area on the Map.",
 		1_000
 	),
-	"Sailing Lessons": Item.new(
-		Item.ItemType.UPGRADE,
+	"Sailing Lessons": UpgradeItem.new(
 		preload("res://assets/items/sailing_lessons.png"),
 		"Allows you to explore a new area on the Map.",
 		2_500
 	),
-	"Heavy Anchor": Item.new(
-		Item.ItemType.UPGRADE,
+	"Heavy Anchor": UpgradeItem.new(
 		preload("res://assets/items/heavy_anchor.png"),
 		"Allows you to explore a new area on the Map.",
 		5_000
 	),
-	"Chartplotter": Item.new(
-		Item.ItemType.UPGRADE,
+	"Chartplotter": UpgradeItem.new(
 		preload("res://assets/items/chartplotter.png"),
 		"Allows you to explore a new area on the Map.",
 		10_000
@@ -174,6 +169,18 @@ func open_level(stage_name : String) -> void:
 
 func get_items() -> Dictionary:
 	return _items
+
+
+func get_boat_used() -> HookItem:
+	return _items[boat]
+
+
+func get_line_used() -> HookItem:
+	return _items[line]
+
+
+func get_hook_used() -> HookItem:
+	return _items[hook]
 
 
 
