@@ -90,6 +90,7 @@ func set_using(value : bool) -> void:
 		else:
 			use.text = "USE"
 			use.toggle_mode = false
+			use.disabled = false
 
 
 func set_item_texture(value : Texture) -> void:
