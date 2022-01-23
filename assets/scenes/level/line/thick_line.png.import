@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/fishing_line.png-3059808ca55b3a620c6635b49661b0cf.stex"
+path="res://.import/thick_line.png-fea4cd5bea10a6ed3c2f8557ddd71ffc.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/scenes/level/line/fishing_line.png"
-dest_files=[ "res://.import/fishing_line.png-3059808ca55b3a620c6635b49661b0cf.stex" ]
+source_file="res://assets/scenes/level/line/thick_line.png"
+dest_files=[ "res://.import/thick_line.png-fea4cd5bea10a6ed3c2f8557ddd71ffc.stex" ]
 
 [params]
 

@@ -66,44 +66,47 @@ var _items := {
 		16.0,
 		16.0
 	),
+	
 	"Rigged Boat": BoatItem.new(
 		preload("res://assets/scenes/level/boat/rigged_boat.png"),
 		"A wood boat fitted to be more comfortable.",
 		250,
 		20.0
 	),
-#	"": LineItem.new(
-#		preload(""),
-#		"",
-#		0,
-#		.0
-#	),
-#	"": HookItem.new(
-#		preload(""),
-#		"",
-#		0,
-#		.0,
-#		.0
-#	),
-	"": BoatItem.new(
+	"Thick Line": LineItem.new(
+		preload("res://assets/scenes/level/line/thick_line.png"),
+		"Thick long line, great for fishing big fish.",
+		125,
+		400.0
+	),
+	"Weighted Hook": HookItem.new(
+		preload("res://assets/scenes/level/hook/weighted_hook.png"),
+		"Hook with attached weight making it sink faster.",
+		200,
+		20.0,
+		16.0
+	),
+	
+	"Sheeted Boat": BoatItem.new(
 		preload("res://assets/scenes/level/boat/sheeted_boat.png"),
 		"A metal sheet makes the boat's hull lighter.",
-		0,
+		750,
 		24.0
 	),
-#	"": LineItem.new(
-#		preload(""),
-#		"",
-#		0,
-#		.0
-#	),
-#	"": HookItem.new(
-#		preload(""),
-#		"",
-#		0,
-#		.0,
-#		.0
-#	),
+	"Long Line": LineItem.new(
+		preload("res://assets/scenes/level/line/long_line.png"),
+		"Sturdy long line, great for fishing deep sea fish.",
+		300,
+		750.0
+	),
+	"Sharp Hook": HookItem.new(
+		preload("res://assets/scenes/level/hook/sharp_hook.png"),
+		"Sharp hook, makes it easier to catch and navigate.",
+		500,
+		20.0,
+		20.0
+	),
+	
 #	"": BoatItem.new(
 #		preload(""),
 #		"",

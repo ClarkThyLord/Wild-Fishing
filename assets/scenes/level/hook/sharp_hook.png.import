@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/fishing_line.png-3059808ca55b3a620c6635b49661b0cf.stex"
+path="res://.import/sharp_hook.png-04ece66dbe3899abf50ca9c591246578.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/scenes/level/line/fishing_line.png"
-dest_files=[ "res://.import/fishing_line.png-3059808ca55b3a620c6635b49661b0cf.stex" ]
+source_file="res://assets/scenes/level/hook/sharp_hook.png"
+dest_files=[ "res://.import/sharp_hook.png-04ece66dbe3899abf50ca9c591246578.stex" ]
 
 [params]
 
@@ -19,7 +19,7 @@ compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
-flags/repeat=1
+flags/repeat=0
 flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false
