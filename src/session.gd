@@ -54,13 +54,13 @@ var _items := {
 	"Fishing Line": Item.new(
 		Item.ItemType.LINE,
 		preload("res://assets/scenes/level/line/fishing_line.png"),
-		"Simple wooden boat.",
+		"Simple fishing line.",
 		0
 	),
 	"Fishing Hook": Item.new(
 		Item.ItemType.HOOK,
 		preload("res://assets/scenes/level/hook/fishing_hook.png"),
-		"Simple wooden boat.",
+		"Simple fishing hook.",
 		0
 	),
 }
