@@ -57,18 +57,25 @@ func random(objects : Node2D) -> void:
 	
 	var fishes := _fish_0.duplicate()
 	
+	var fish_1 := true
+	var fish_2 := true
+	var fish_3 := true
+	
 	var y := 375.0
 	while y < _stage_depth * 16:
 		if randf() < 0.6 and objs < 60:
 			continue
 		
-		if y / 16 > 150:
+		if fish_1 and y / 16 > 150:
+			fish_1 = false
 			fishes += _fish_1
-		elif y / 16 > 300:
+		elif fish_2 and y / 16 > 300:
+			fish_2 = false
 			for fish in _fish_0:
 				fishes.erase(fish)
 			fishes += _fish_2
-		elif y / 16 > 400:
+		elif fish_3 and y / 16 > 400:
+			fish_3 = false
 			fishes += _fish_3
 		
 		var obj : LevelObject
