@@ -67,6 +67,7 @@ func update_depth_max(value : float) -> void:
 
 func start_resting() -> void:
 	resting.visible = true
+	rest.release_focus()
 	rest.disabled = true
 	
 	emit_signal("resting")
