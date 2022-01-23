@@ -82,6 +82,8 @@ func _ready() -> void:
 	
 	boat.texture = Session.get_boat_used().get_texture()
 	
+	line.texture = Session.get_line_used().get_texture()
+	
 	hud.update_money()
 	
 	set_stage(

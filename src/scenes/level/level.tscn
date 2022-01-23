@@ -272,7 +272,7 @@ z_as_relative = false
 points = PoolVector2Array( 504, -227, 504, -195 )
 default_color = Color( 1, 1, 1, 1 )
 texture = ExtResource( 10 )
-texture_mode = 2
+texture_mode = 1
 end_cap_mode = 2
 
 [node name="Boat" type="Sprite" parent="Background"]
