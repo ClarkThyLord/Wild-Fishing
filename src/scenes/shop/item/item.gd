@@ -82,7 +82,14 @@ func set_using(value : bool) -> void:
 	using = value
 	
 	if is_instance_valid(use):
-		use.text = "USING" if using else "USE"
+		if using:
+			use.text = "USING"
+			use.toggle_mode = true
+			use.pressed = true
+			use.disabled = true
+		else:
+			use.text = "USE"
+			use.toggle_mode = false
 
 
 func set_item_texture(value : Texture) -> void:
@@ -111,6 +118,8 @@ func set_item_price(value : int) -> void:
 	
 	if is_instance_valid(item_price_ref):
 		item_price_ref.text = "| $     %07d" % item_price
+	if is_instance_valid(buy):
+		buy.disabled = Session.money < item_price
 
 
 func set_item(item_name : String, item : Item) -> void:
@@ -139,8 +148,24 @@ func set_item(item_name : String, item : Item) -> void:
 
 ## Private Methods
 func _on_Buy_pressed():
+	if Session.money < item_price:
+		return
+	
+	Session.money -= item_price
+	
 	emit_signal("bought")
 
 
 func _on_Use_pressed():
+	if not usable or using:
+		return
+	
+	match _item.get_item_type():
+		Item.ItemType.BOAT:
+			Session.boat = item_name
+		Item.ItemType.LINE:
+			Session.line = item_name
+		Item.ItemType.HOOK:
+			Session.hook = item_name
+	
 	emit_signal("used")

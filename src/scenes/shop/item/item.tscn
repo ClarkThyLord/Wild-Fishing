@@ -102,6 +102,7 @@ margin_right = 192.0
 margin_bottom = 98.0
 rect_min_size = Vector2( 0, 46 )
 mouse_default_cursor_shape = 2
+custom_colors/font_color_disabled = Color( 0.243137, 0.152941, 0.137255, 1 )
 text = "USE"
 
 [connection signal="pressed" from="HBoxContainer/VBoxContainer2/Buy" to="." method="_on_Buy_pressed"]
