@@ -1,43 +1,104 @@
 extends Stage
-## Level Bay Stage Class
+## Level The Deep Stage Class
 
 
 
 ## Private Variables
 var _fish_0 := [
-	6,
-	7,
-	8,
-	9,
-	14,
-	15,
-]
-
-var _fish_1 := [
-	0,
-	1,
-	2,
-	3,
-	4,
-	5,
-]
-
-var _fish_2 := [
 	10,
 	11,
 	12,
+	13,
+	21,
+	22,
+	23,
+	24,
+	25,
+	26,
+	27,
+	28,
+	29,
+	30,
+	31,
+	32,
+	33,
+	34,
+	51,
+]
+
+var _fish_1 := [
+	57,
+	58,
+	59,
+	60,
+	61,
+	62,
+	63,
+	64,
+	65,
+	66,
+	67,
+	68,
+	69,
+	70,
+]
+
+var _fish_2 := [
+	88,
+	88,
+	89,
+	89,
+	85,
+	85,
+	86,
+	86,
+	87,
+	87,
 ]
 
 var _fish_3 := [
-	13,
-	13,
+	71,
+	71,
+	71,
+	72,
+	72,
+	72,
+	73,
+	73,
+	73,
+	74,
+	74,
+	74,
+	75,
+	75,
+	75,
+]
+
+var _fish_4 := [
+	76,
+	77,
+	78,
+	52,
+	53,
+	54,
+	55,
+	56,
+]
+
+var _fish_5 := [
+	79,
+	80,
+	81,
+	82,
+	83,
+	84,
 ]
 
 
 
 ## Built-In Virtual Methods
 func _init() -> void:
-	_stage_depth = 500
+	_stage_depth = 3000
 	
 	_ocean = preload("res://assets/scenes/level/stages/the_deep/ocean.png")
 	_waves = preload("res://assets/scenes/level/stages/the_deep/waves.png")
@@ -49,27 +110,48 @@ func _init() -> void:
 ## Public Methods
 func random(objects : Node2D) -> void:
 	_wall_points.clear()
-	for s in range(_stage_depth + 32):
-		var h = (cos(s / 3) + 1) * 2
-		_wall_points.append(h + 1 + randi() % 4)
+	
+	var stage_end := min(_stage_depth, Session.get_line_used().get_length())
+	
+	for s in range(stage_end + 42):
+		_wall_points.append(1)
 	
 	var objs := 0
 	
 	var fishes := _fish_0.duplicate()
 	
+	var fish_1 := true
+	var fish_2 := true
+	var fish_3 := true
+	var fish_4 := true
+	var fish_5 := true
+	
 	var y := 375.0
-	while y < _stage_depth * 16:
+	while y < stage_end * 16:
 		if randf() < 0.6 and objs < 60:
 			continue
 		
-		if y / 16 > 150:
+		if fish_1 and y / 16 > 500:
+			fish_1 = false
 			fishes += _fish_1
-		elif y / 16 > 300:
+		elif fish_2 and y / 16 > 1000:
+			fish_2 = false
 			for fish in _fish_0:
 				fishes.erase(fish)
 			fishes += _fish_2
-		elif y / 16 > 400:
+		elif fish_3 and y / 16 > 1500:
+			fish_3 = false
+			for fish in _fish_1:
+				fishes.erase(fish)
 			fishes += _fish_3
+		elif fish_4 and y / 16 > 2000:
+			fish_4 = false
+			fishes += _fish_4
+		elif fish_5 and y / 16 > 2500:
+			fish_5 = false
+			for fish in _fish_2:
+				fishes.erase(fish)
+			fishes += _fish_5
 		
 		var obj : LevelObject
 		
@@ -84,3 +166,5 @@ func random(objects : Node2D) -> void:
 		obj.position.y = y
 		
 		objs += 1
+	
+	_fish_count = objs
