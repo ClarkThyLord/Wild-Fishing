@@ -131,12 +131,12 @@ __meta__ = {
 "_edit_use_anchors_": true
 }
 
-[node name="Sea" type="Area2D" parent="."]
+[node name="Ocean" type="Area2D" parent="."]
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Sea"]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Ocean"]
 polygon = PoolVector2Array( 0, 532, 1, 394, 68, 381, 159, 369, 179, 332, 165, 314, 188, 300, 210, 295, 257, 262, 265, 224, 297, 203, 306, 181, 324, 175, 334, 120, 325, 114, 332, 88, 368, 80, 394, 58, 406, 24, 403, 0, 684, -1, 684, 63, 709, 68, 625, 140, 528, 179, 499, 209, 450, 263, 372, 382, 330, 411, 150, 446, 44, 485 )
 
-[node name="Label" type="Label" parent="Sea"]
+[node name="Label" type="Label" parent="Ocean"]
 margin_left = 295.0
 margin_top = 189.0
 margin_right = 460.0
@@ -178,7 +178,7 @@ __meta__ = {
 [connection signal="mouse_exited" from="Bay" to="." method="_on_Area_mouse_exited" binds= [ "Bay" ]]
 [connection signal="input_event" from="ShallowWaters" to="." method="_on_Area_input_event" binds= [ "ShallowWaters" ]]
 [connection signal="mouse_exited" from="ShallowWaters" to="." method="_on_Area_mouse_exited" binds= [ "ShallowWaters" ]]
-[connection signal="input_event" from="Sea" to="." method="_on_Area_input_event" binds= [ "Sea" ]]
-[connection signal="mouse_exited" from="Sea" to="." method="_on_Area_mouse_exited" binds= [ "Sea" ]]
+[connection signal="input_event" from="Ocean" to="." method="_on_Area_input_event" binds= [ "Ocean" ]]
+[connection signal="mouse_exited" from="Ocean" to="." method="_on_Area_mouse_exited" binds= [ "Ocean" ]]
 [connection signal="input_event" from="TheDeep" to="." method="_on_Area_input_event" binds= [ "TheDeep" ]]
 [connection signal="mouse_exited" from="TheDeep" to="." method="_on_Area_mouse_exited" binds= [ "TheDeep" ]]
