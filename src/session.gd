@@ -23,7 +23,7 @@ const VERSION = "0.0.0"
 ## Public Variables
 var story_progress : int = StoryProgress.NEW_GAME
 
-var money := 0 setget set_money
+var money := 10000000 setget set_money
 
 var inventory := [
 	"Wood Boat",
@@ -91,7 +91,7 @@ var _items := {
 		preload("res://assets/scenes/level/boat/sheeted_boat.png"),
 		"A metal sheet makes the boat's hull lighter.",
 		750,
-		24.0
+		22.0
 	),
 	"Long Line": LineItem.new(
 		preload("res://assets/scenes/level/line/long_line.png"),
@@ -105,6 +105,86 @@ var _items := {
 		500,
 		20.0,
 		20.0
+	),
+	
+	"Iron Boat": BoatItem.new(
+		preload("res://assets/scenes/level/boat/iron_boat.png"),
+		"Sturdy boat made out of iron.",
+		1500,
+		24.0
+	),
+	"Sturdy Line": LineItem.new(
+		preload("res://assets/scenes/level/line/sturdy_line.png"),
+		"Very sturdy line made for fishing.",
+		750,
+		900.0
+	),
+	"Double Hook": HookItem.new(
+		preload("res://assets/scenes/level/hook/double_hook.png"),
+		"Double the hook!",
+		1000,
+		22.0,
+		20.0
+	),
+	
+	"Tipped Boat": BoatItem.new(
+		preload("res://assets/scenes/level/boat/tipped_boat.png"),
+		"Golden tipped boat, because why not?",
+		2500,
+		25.0
+	),
+	"Fine Line": LineItem.new(
+		preload("res://assets/scenes/level/line/fine_line.png"),
+		"Very fine line great for fishing lots of fish.",
+		1000,
+		1000.0
+	),
+	"Heavy Hook": HookItem.new(
+		preload("res://assets/scenes/level/hook/heavy_hook.png"),
+		"The heavier they are, the faster they fall!",
+		1500,
+		24.0,
+		18.0
+	),
+	
+	"Sheltered Boat": BoatItem.new(
+		preload("res://assets/scenes/level/boat/sheltered_boat.png"),
+		"Shelter on a boat? Who would've thought",
+		3000,
+		26.0
+	),
+	"Extremely Long Line": LineItem.new(
+		preload("res://assets/scenes/level/line/extremely_long_line.png"),
+		"Who would need soo much line?",
+		1500,
+		2000.0
+	),
+	"Gold Tipped Hook": HookItem.new(
+		preload("res://assets/scenes/level/hook/gold_tipped_hook.png"),
+		"Gold on a hook, does it attract fish?",
+		2500,
+		24.0,
+		22.0
+	),
+	
+	"Gold Boat": BoatItem.new(
+		preload("res://assets/scenes/level/boat/golden_boat.png"),
+		"A boat made out of gold... oh, and it can float too.",
+		6000,
+		27.0
+	),
+	"Military Line": LineItem.new(
+		preload("res://assets/scenes/level/line/military_line.png"),
+		"Line that can tie go around the world and back.",
+		4000.0,
+		3000.0
+	),
+	"Fancy Hook": HookItem.new(
+		preload("res://assets/scenes/level/hook/fancy_hook.png"),
+		"Scientists were so preoccupied with whether they could, they didn't stop to think if they should.",
+		5000,
+		25.0,
+		27.0
 	),
 	
 #	"": BoatItem.new(
@@ -126,6 +206,7 @@ var _items := {
 #		.0,
 #		.0
 #	),
+	
 	"Boating Lessons": UpgradeItem.new(
 		preload("res://assets/items/boating_lessons.png"),
 		"Allows you to explore a new area on the Map.",
