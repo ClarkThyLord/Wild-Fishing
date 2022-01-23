@@ -4,16 +4,6 @@ class_name Item
 
 
 
-## Enums
-enum ItemType {
-	BOAT,
-	LINE,
-	HOOK,
-	UPGRADE,
-}
-
-
-
 ## Private Variables
 var _item_type : int
 
@@ -26,29 +16,17 @@ var _price : int
 
 
 ## Built-In Virtual Methods
-func _init(
-		item_type : int,
-		texture : Texture,
-		description : String,
-		price : int) -> void:
-	_item_type = item_type
-	_texture = texture
-	_description = description
-	_price = price
-	
-	._init()
+#func _init(
+#		texture : Texture,
+#		description : String,
+#		price : int) -> void:
+#	_texture = texture
+#	_description = description
+#	_price = price
 
 
 
 ## Public Methods
-func get_item_type() -> int:
-	return _item_type
-
-
-func get_item_type_name() -> String:
-	return ItemType.keys()[_item_type]
-
-
 func get_texture() -> Texture:
 	return _texture
 

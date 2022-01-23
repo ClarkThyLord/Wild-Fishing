@@ -9,6 +9,16 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Item",
+"class": "BoatItem",
+"language": "GDScript",
+"path": "res://src/classes/items/boat_item.gd"
+}, {
+"base": "Item",
+"class": "HookItem",
+"language": "GDScript",
+"path": "res://src/classes/items/hook_item.gd"
+}, {
 "base": "Reference",
 "class": "Item",
 "language": "GDScript",
@@ -19,15 +29,29 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://src/scenes/level/objects/level_object.gd"
 }, {
+"base": "Item",
+"class": "LineItem",
+"language": "GDScript",
+"path": "res://src/classes/items/line_item.gd"
+}, {
 "base": "Reference",
 "class": "Stage",
 "language": "GDScript",
 "path": "res://src/scenes/level/stages/stage.gd"
+}, {
+"base": "Item",
+"class": "UpgradeItem",
+"language": "GDScript",
+"path": "res://src/classes/items/upgrade_item.gd"
 } ]
 _global_script_class_icons={
+"BoatItem": "",
+"HookItem": "",
 "Item": "",
 "LevelObject": "",
-"Stage": ""
+"LineItem": "",
+"Stage": "",
+"UpgradeItem": ""
 }
 
 [application]
