@@ -24,6 +24,14 @@
 
 ---
 
+
+<p align="center">
+	<a href="https://youtu.be/6P1OCGtGxQE">
+		<img src="./icon.cover.png" alt="TRAILER" />
+	</a>
+</p>
+
+
 # About
 Wild-Fishing is a 2D fishing game made with [Godot](https://github.com/godotengine/godot), made in a week for the [Godot Wild Jam #41](https://itch.io/jam/godot-wild-jam-41).
 
